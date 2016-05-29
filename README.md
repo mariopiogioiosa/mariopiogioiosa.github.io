@@ -1,2 +1,2 @@
 # reversecoding
-Repository of reversecoding.net examples
+Example repository of: [reversecoding.net](http://reversecoding.net/)
