@@ -52,13 +52,13 @@ Let's define a Pojo class:
 
 In the first example, we convert a _List<Person>_ in a _Map<String, Person>_ that has email as key and the object itself as value.
 
-<pre class="lang:default decode:true">List&lt;Person&gt; people = Arrays.asList(
+<pre class="lang:default decode:true">List<Person> people = Arrays.asList(
      new Person("mario@reversecoding.net", "Mario", 27),
      new Person("luigi@reversecoding.net", "Luigi", 30),
      new Person("steve@reversecoding.net", "Steve", 20)
  );
 		
- Map&lt;String, Person&gt; mapEmailPerson = 
+ Map<String, Person> mapEmailPerson = 
           people.stream()
                 .collect(Collectors.toMap(Person::getEmail, Function.identity()));
 		
@@ -75,9 +75,9 @@ The output will be:
 
 Or using lambda:
 
-<pre class="lang:java decode:true" title="Using lambda">Map&lt;String, Person&gt; mapEmailPerson = 
+<pre class="lang:java decode:true" title="Using lambda">Map<String, Person> mapEmailPerson = 
          people.stream()				
-               .collect(Collectors.toMap(person -&gt; person.getEmail(), person -&gt; person));
+               .collect(Collectors.toMap(person -> person.getEmail(), person -> person));
 		
 System.out.println(mapEmailPerson);</pre>
 
@@ -103,7 +103,7 @@ Since we are working with _Stream_ of Person &#8211; our input it's an object _
 We have chosen the email as key, so that is a function that given the input &#8211; _Person_ &#8211; returns its email:
 
 <pre class="lang:default decode:true">//Given a person, we get his email
-person -&gt; person.getEmail()
+person -> person.getEmail()
 
 //Or using method reference
 Person::getEmail()
@@ -113,7 +113,7 @@ Person::getEmail()
 and then the object itself as value, so it's just an identity function:
 
 <pre class="lang:default decode:true">//Given a person, we want as value the person itself
-person -&gt; person
+person -> person
 
 //Or 
 Function.identity()</pre>
@@ -127,22 +127,22 @@ Given a _List<Person>_ we want to create a _Map<String, Integer>_ that contains
 We just need to change the two parameters of the _Collectors.toMap_, by specifying:
 
 <pre class="lang:default decode:true">//Name as key
-person -&gt; person.getName()
+person -> person.getName()
 
 //Age as value
-person -&gt; person.getAge()</pre>
+person -> person.getAge()</pre>
 
 So the code will be:
 
-<pre class="lang:java decode:true">List&lt;Person&gt; people = Arrays.asList(
+<pre class="lang:java decode:true">List<Person> people = Arrays.asList(
     new Person("mario@reversecoding.net", "Mario", 27),
     new Person("luigi@reversecoding.net", "Luigi", 30),
     new Person("steve@reversecoding.net", "Steve", 20)
 );
 
-Map&lt;String, Integer&gt; mapNameAge = 
+Map<String, Integer> mapNameAge = 
     people.stream()
-          .collect(Collectors.toMap(person -&gt; person.getName(), person -&gt; person.getAge()));
+          .collect(Collectors.toMap(person -> person.getName(), person -> person.getAge()));
 		
 System.out.println(mapNameAge);
 
@@ -164,12 +164,12 @@ If we want to preserve the order we should use a _[LinkedHashMap](https://docs.
 
 Let's try the previous example by passing a _LinkedHashMap_ to Collectors.toMap()
 
-<pre class="lang:java decode:true ">Map&lt;String, Integer&gt; mapNameAge = 
+<pre class="lang:java decode:true ">Map<String, Integer> mapNameAge = 
 	people.stream()
 		  .collect(Collectors.toMap(
 				  Person::getName, 
 				  Person::getAge, 
-				  (u,v) -&gt; { throw new IllegalStateException(String.format("Duplicate key %s", u)); },
+				  (u,v) -> { throw new IllegalStateException(String.format("Duplicate key %s", u)); },
 				  LinkedHashMap::new
 				  ));
 

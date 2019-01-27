@@ -25,7 +25,7 @@ tags:
 
 ## 1. Sort a List of String alphabetically
 
-<pre class="lang:default decode:true" title="Sort List of String alphabetically">List&lt;String&gt; cities = Arrays.asList(
+<pre class="lang:default decode:true" title="Sort List of String alphabetically">List<String> cities = Arrays.asList(
        "Milan",
        "london",
        "San Francisco",
@@ -53,7 +53,7 @@ System.out.println(cities);
 
 ## 2. Sort a List of Integer
 
-<pre class="lang:default decode:true">List&lt;Integer&gt; numbers = Arrays.asList(6, 2, 1, 4, 9);
+<pre class="lang:default decode:true">List<Integer> numbers = Arrays.asList(6, 2, 1, 4, 9);
 System.out.println(numbers); //[6, 2, 1, 4, 9]
 
 numbers.sort(Comparator.naturalOrder());
@@ -65,7 +65,7 @@ System.out.println(numbers); //[1, 2, 4, 6, 9]</pre>
   Let's suppose we've our <em>Movie</em> class and we want to sort our <em>List</em> &#8220;by title&#8221;. We can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" target="_blank" rel="noopener"><em>Comparator.comparing()</em></a> and pass a function that extracts the field to use for sorting &#8211; title &#8211; in this example.
 </p>
 
-<pre class="lang:default decode:true">List&lt;Movie&gt; movies = Arrays.asList(
+<pre class="lang:default decode:true">List<Movie> movies = Arrays.asList(
         new Movie("Lord of the rings"),
         new Movie("Back to the future"),
         new Movie("Carlito's way"),
@@ -86,8 +86,8 @@ Movie{title='Pulp fiction'}</pre>
   As you've probably noticed we haven't passed any <em>Comparator </em>but the <em>List</em> is correctly sorted. That's because of the title &#8211; the extracted field &#8211; that is a <em>String</em> and <em>String</em> implements <em>Comparable</em> interface. If you peek at <em>Comparator.comparing()</em> implementation you will see that it calls <strong><em>compareTo</em></strong> on the extracted key.
 </p>
 
-<pre class="lang:default decode:true">return (Comparator&lt;T&gt; & Serializable)
-            (c1, c2) -&gt; keyExtractor.apply(c1).compareTo(keyExtractor.apply(c2));</pre>
+<pre class="lang:default decode:true">return (Comparator<T> & Serializable)
+            (c1, c2) -> keyExtractor.apply(c1).compareTo(keyExtractor.apply(c2));</pre>
 
 ## 4. Sort a List by double field
 
@@ -95,7 +95,7 @@ Movie{title='Pulp fiction'}</pre>
   In a similar way, we can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparingDouble-java.util.function.ToDoubleFunction-" target="_blank" rel="noopener"><em>Comparator.comparingDouble()</em></a> for comparing <em>double</em> value. In the example, we want to order our <em>List</em> of <em>Movie</em> by rating, from the highest to the lowest.
 </p>
 
-<pre class="lang:default decode:true">List&lt;Movie&gt; movies = Arrays.asList(
+<pre class="lang:default decode:true">List<Movie> movies = Arrays.asList(
         new Movie("Lord of the rings", 8.8),
         new Movie("Back to the future", 8.5),
         new Movie("Carlito's way", 7.9),
@@ -118,13 +118,13 @@ movies.forEach(System.out::println);</pre>
 
 In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. Our _Movie_ class has a new field &#8211; &#8220;starred&#8221; &#8211; set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List. _
 
-<pre class="lang:default decode:true">List&lt;Movie&gt; movies = Arrays.asList(
+<pre class="lang:default decode:true">List<Movie> movies = Arrays.asList(
         new Movie("Lord of the rings", 8.8, true),
         new Movie("Back to the future", 8.5, false),
         new Movie("Carlito's way", 7.9, true),
         new Movie("Pulp fiction", 8.9, false));
 
-movies.sort(new Comparator&lt;Movie&gt;() {
+movies.sort(new Comparator<Movie>() {
     @Override
     public int compare(Movie m1, Movie m2) {
         if(m1.getStarred() == m2.getStarred()){
@@ -145,7 +145,7 @@ Movie{starred=false, title='Pulp fiction', rating=8.9}</pre>
 
 We can, of course, use Lambda expression instead of _Anonymous_ class as follows:
 
-<pre class="lang:default decode:true">movies.sort((m1, m2) -&gt; {
+<pre class="lang:default decode:true">movies.sort((m1, m2) -> {
     if(m1.getStarred() == m2.getStarred()){
         return 0;
     }
@@ -154,7 +154,7 @@ We can, of course, use Lambda expression instead of _Anonymous_ class as follows
 
 And we can also use again _Comparator.comparing():_
 
-<pre class="lang:default decode:true">movies.sort(Comparator.comparing(Movie::getStarred, (star1, star2) -&gt; {
+<pre class="lang:default decode:true">movies.sort(Comparator.comparing(Movie::getStarred, (star1, star2) -> {
     if(star1 == star2){
          return 0;
     }
@@ -167,7 +167,7 @@ In the latest example _Comparator.comparing()_ takes as first parameter the func
 
 In the latest example, we want to have starred movie at the top and then sort by rating.
 
-<pre class="lang:default decode:true ">List&lt;Movie&gt; movies = Arrays.asList(
+<pre class="lang:default decode:true ">List<Movie> movies = Arrays.asList(
         new Movie("Lord of the rings", 8.8, true),
         new Movie("Back to the future", 8.5, false),
         new Movie("Carlito's way", 7.9, true),
