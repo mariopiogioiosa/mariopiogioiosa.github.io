@@ -20,7 +20,7 @@ tags:
   - sorting
 ---
 <p style="text-align: justify;">
-  In this article, we&#8217;re going to see several examples on how to sort a <em>List</em> in Java 8.
+  In this article, we're going to see several examples on how to sort a <em>List</em> in Java 8.
 </p>
 
 ## 1. Sort a List of String alphabetically
@@ -44,7 +44,7 @@ System.out.println(cities);
 //[Milan, New Delhi, San Francisco, Tokyo, london]</pre>
 
 <p style="text-align: justify;">
-  By purpose, we&#8217;ve written London with &#8220;L&#8221; in low-case to better highlight difference between <em><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#naturalOrder--" target="_blank" rel="noopener">Comparator.naturalOrder()</a> </em>that<em> </em>returns a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="noopener"><em>Comparator</em></a> that sorts by placing capital letters first and <em><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER">String.CASE_INSENSITIVE_ORDER</a> </em>that returns a case-insensitive <em>Comparator</em>.
+  By purpose, we've written London with &#8220;L&#8221; in low-case to better highlight difference between <em><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#naturalOrder--" target="_blank" rel="noopener">Comparator.naturalOrder()</a> </em>that<em> </em>returns a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="noopener"><em>Comparator</em></a> that sorts by placing capital letters first and <em><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER">String.CASE_INSENSITIVE_ORDER</a> </em>that returns a case-insensitive <em>Comparator</em>.
 </p>
 
 <p style="text-align: justify;">
@@ -62,7 +62,7 @@ System.out.println(numbers); //[1, 2, 4, 6, 9]</pre>
 ## 3. Sort a List by String field
 
 <p style="text-align: justify;">
-  Let&#8217;s suppose we&#8217;ve our <em>Movie</em> class and we want to sort our <em>List</em> &#8220;by title&#8221;. We can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" target="_blank" rel="noopener"><em>Comparator.comparing()</em></a> and pass a function that extracts the field to use for sorting &#8211; title &#8211; in this example.
+  Let's suppose we've our <em>Movie</em> class and we want to sort our <em>List</em> &#8220;by title&#8221;. We can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" target="_blank" rel="noopener"><em>Comparator.comparing()</em></a> and pass a function that extracts the field to use for sorting &#8211; title &#8211; in this example.
 </p>
 
 <pre class="lang:default decode:true">List&lt;Movie&gt; movies = Arrays.asList(
@@ -83,7 +83,7 @@ Movie{title='Lord of the rings'}
 Movie{title='Pulp fiction'}</pre>
 
 <p style="text-align: justify;">
-  As you&#8217;ve probably noticed we haven&#8217;t passed any <em>Comparator </em>but the <em>List</em> is correctly sorted. That&#8217;s because of the title &#8211; the extracted field &#8211; that is a <em>String</em> and <em>String</em> implements <em>Comparable</em> interface. If you peek at <em>Comparator.comparing()</em> implementation you will see that it calls <strong><em>compareTo</em></strong> on the extracted key.
+  As you've probably noticed we haven't passed any <em>Comparator </em>but the <em>List</em> is correctly sorted. That's because of the title &#8211; the extracted field &#8211; that is a <em>String</em> and <em>String</em> implements <em>Comparable</em> interface. If you peek at <em>Comparator.comparing()</em> implementation you will see that it calls <strong><em>compareTo</em></strong> on the extracted key.
 </p>
 
 <pre class="lang:default decode:true">return (Comparator&lt;T&gt; & Serializable)
@@ -116,7 +116,7 @@ movies.forEach(System.out::println);</pre>
 
 ## 5. Sort a List with custom Comparator
 
-In the previous examples we haven&#8217;t specified any Comparator since it wasn&#8217;t necessary but let&#8217;s see an example in which we define our own _Comparator_. Our _Movie_ class has a new field &#8211; &#8220;starred&#8221; &#8211; set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List. _
+In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. Our _Movie_ class has a new field &#8211; &#8220;starred&#8221; &#8211; set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List. _
 
 <pre class="lang:default decode:true">List&lt;Movie&gt; movies = Arrays.asList(
         new Movie("Lord of the rings", 8.8, true),
@@ -189,4 +189,4 @@ Movie{starred=true, title='Carlito's way', rating=7.9}
 Movie{starred=false, title='Pulp fiction', rating=8.9}
 Movie{starred=false, title='Back to the future', rating=8.5}</pre>
 
-As you&#8217;ve seen we first sort by starred and then by rating &#8211; both reversed since we want the highest value and true first.
+As you've seen we first sort by starred and then by rating &#8211; both reversed since we want the highest value and true first.

@@ -26,7 +26,7 @@ An example to convert a _List<?>_ to a _Map<K,V>_ using Java 8 _[Stream](https:/
 
 ### Java 8 &#8211; Collectors.toMap()
 
-Let&#8217;s define a Pojo class:
+Let's define a Pojo class:
 
 <pre class="lang:java decode:true">public class Person {
 
@@ -90,7 +90,7 @@ luigi@reversecoding.net=Person [email=luigi@reversecoding.net, name=Luigi, age=3
 
 ### 
 
-### Let&#8217;s break this out
+### Let's break this out
 
 First of all, we create a _Stream_ of _Person_ from the _List<Person>_ defined_._
 
@@ -98,7 +98,7 @@ Then we collect this stream in a _Map_. Java 8 helps us to define the needed _Co
 
 Collectors.toMap() takes two functions &#8211; one for mapping the key and one for the value &#8211; and returns a `Collector` that accumulates elements into a `Map.`
 
-Since we are working with _Stream_ of Person &#8211; our input it&#8217;s an object _Person_.
+Since we are working with _Stream_ of Person &#8211; our input it's an object _Person_.
 
 We have chosen the email as key, so that is a function that given the input &#8211; _Person_ &#8211; returns its email:
 
@@ -110,7 +110,7 @@ Person::getEmail()
 
 </pre>
 
-and then the object itself as value, so it&#8217;s just an identity function:
+and then the object itself as value, so it's just an identity function:
 
 <pre class="lang:default decode:true">//Given a person, we want as value the person itself
 person -&gt; person
@@ -152,7 +152,7 @@ Output:
 
 <pre class="lang:default decode:true ">{Steve=20, Luigi=30, Mario=27}</pre>
 
-If you are a good observer you may have noticed that the order hasn&#8217;t been respected. That&#8217;s because the default implementation used by _toMap_ is the [_HashMap_](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) that does not guarantee the order of the map.
+If you are a good observer you may have noticed that the order hasn't been respected. That's because the default implementation used by _toMap_ is the [_HashMap_](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) that does not guarantee the order of the map.
 
 &nbsp;
 
@@ -162,7 +162,7 @@ If you are a good observer you may have noticed that the order hasn&#8217;t been
 
 If we want to preserve the order we should use a _[LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) _instead of the HashMap.
 
-Let&#8217;s try the previous example by passing a _LinkedHashMap_ to Collectors.toMap()
+Let's try the previous example by passing a _LinkedHashMap_ to Collectors.toMap()
 
 <pre class="lang:java decode:true ">Map&lt;String, Integer&gt; mapNameAge = 
 	people.stream()
@@ -186,8 +186,8 @@ We are using the definition of [toMap that takes four parameters](https://docs.
   * `mergeFunction` &#8211; a merge function used to resolve collisions between values associated with the same key
   * `mapSupplier` &#8211; a function which returns a new, empty `Map` into which the results will be inserted
 
-We&#8217;ve already discussed the first two parameters.
+We've already discussed the first two parameters.
 
 In case of a collision we just want to throw an exception, so as third parameter we define that. In the example, we used the same implementation of the static method _throwingMerger _defined in the java.util.stream.Collectors class.
 
-The fourth parameter it&#8217;s the one in which we define a function that returns our _LinkedHashMap_.
+The fourth parameter it's the one in which we define a function that returns our _LinkedHashMap_.

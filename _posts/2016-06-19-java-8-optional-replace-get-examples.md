@@ -28,49 +28,49 @@ Optional class were introduced in order to prevent _NullPointerException_,_ _
 
 Different name, same issue?
 
-Calling _get() _without checking that value is actually present it&#8217;s a bug. So we should always write something like that in order to use _get()._
+Calling _get() _without checking that value is actually present it's a bug. So we should always write something like that in order to use _get()._
 
-<pre class="lang:java decode:true">Optional&lt;String&gt; myString = Optional.ofNullable(getNullableString());
+<pre class="lang:java decode:true">Optional<String> myString = Optional.ofNullable(getNullableString());
    if(myString.isPresent()){
        doSomething(myString.get());
    }</pre>
 
 ### But are Optional really meant to be used in this way? No.
 
-Writing block of i_sPresent/get_ it&#8217;s not so different from writing a classic null check.
+Writing block of i_sPresent/get_ it's not so different from writing a classic null check.
 
 <pre class="lang:java decode:true">String myString = getNullableString();
    if(myString != null){
        doSomething(myString);
    }</pre>
 
-Let&#8217;s see how we can really benefit from Optional object.
+Let's see how we can really benefit from Optional object.
 
 ## 1. Optional _orElse_ example
 
 It returns the value if is present, or the other specified otherwise.
 
-Let&#8217;s see an example:
+Let's see an example:
 
 <pre class="lang:java decode:true">@Test
 	public void orElse_whenNamePresent_ThenName(){
-		Optional&lt;String&gt; petName = Optional.of("Bobby");
+		Optional<String> petName = Optional.of("Bobby");
 		
 		assertEquals("Bobby", petName.orElse(""));
 	}</pre>
 
 <pre class="lang:java decode:true ">@Test
 	public void orElse_whenNameNotPresent_ThenEmptyString(){
-		Optional&lt;String&gt; petName = Optional.empty();
+		Optional<String> petName = Optional.empty();
 		
 		assertEquals("", petName.orElse(""));
 	}</pre>
 
-As you can see we haven&#8217;t called _get()_ and we&#8217;ve made the code easier and more readable compared to the _isPresent/get_ version:
+As you can see we haven't called _get()_ and we've made the code easier and more readable compared to the _isPresent/get_ version:
 
 <pre class="lang:java decode:true">@Test
 	public void isPresentGet_whenNamePresent_ThenName(){
-		Optional&lt;String&gt; petNameOptional = Optional.of("Bobby");
+		Optional<String> petNameOptional = Optional.of("Bobby");
 		
 		String petName = "";
 		if(petNameOptional.isPresent()){
@@ -82,7 +82,7 @@ As you can see we haven&#8217;t called _get()_ and we&#8217;ve made the code eas
 	
 	@Test
 	public void isPresentGet_whenNameNotPresent_ThenEmptyString(){
-		Optional&lt;String&gt; petNameOptional = Optional.empty();
+		Optional<String> petNameOptional = Optional.empty();
 		
 		String petName = "";
 		if(petNameOptional.isPresent()){
@@ -100,14 +100,14 @@ It returns the value if is present, or throws the specified exception otherwise.
 
 <pre class="lang:java decode:true">@Test
 	public void elseOrThrow_whenNamePresent_ThenName(){
-		Optional&lt;String&gt; petName = Optional.of("Bobby");
+		Optional<String> petName = Optional.of("Bobby");
 		
 		assertEquals("Bobby", petName.orElse(""));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void elseOrThrow_whenNameNotPresent_ThenIllegalArgEx(){
-		Optional&lt;String&gt; petName = Optional.empty();
+		Optional<String> petName = Optional.empty();
 		
 		petName.orElseThrow(IllegalArgumentException::new);
 	}</pre>
@@ -122,9 +122,9 @@ In this example we want that the name not only is different from _null_ but also
 
 <pre class="lang:java decode:true">@Test
 	public void filter_whenNameNotEmpty_thenName(){
-		Optional&lt;String&gt; petNameOpt = Optional.of("Bobby");
+		Optional<String> petNameOpt = Optional.of("Bobby");
 		
-		String petName = petNameOpt.filter(name -&gt; !name.trim().isEmpty())
+		String petName = petNameOpt.filter(name -> !name.trim().isEmpty())
 								   .orElseThrow(IllegalArgumentException::new);
 		
 		assertEquals("Bobby", petName);
@@ -134,23 +134,23 @@ And those are the tests for the null and the empty name:
 
 <pre class="lang:default decode:true ">@Test(expected=IllegalArgumentException.class)
 	public void filter_whenNameNotPresent_thenIllegalArgEx(){
-		Optional&lt;String&gt; petNameOpt = Optional.empty();
+		Optional<String> petNameOpt = Optional.empty();
 		
-		petNameOpt.filter(name -&gt; !name.trim().isEmpty())
+		petNameOpt.filter(name -> !name.trim().isEmpty())
 				  .orElseThrow(IllegalArgumentException::new);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void filter_whenNameEmpty_thenIllegalArgEx(){
-		Optional&lt;String&gt; petNameOpt = Optional.of(" ");
+		Optional<String> petNameOpt = Optional.of(" ");
 		
-		petNameOpt.filter(name -&gt; !name.trim().isEmpty())
+		petNameOpt.filter(name -> !name.trim().isEmpty())
 				  .orElseThrow(IllegalArgumentException::new);
 	}</pre>
 
 ## 4. Optional _ifPresent_ example
 
-_[IfPresent](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ifPresent-java.util.function.Consumer-)_, that it&#8217;s different from _isPresent_, accept a function, a Consumer, and executes it only if the value is present.
+_[IfPresent](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ifPresent-java.util.function.Consumer-)_, that it's different from _isPresent_, accept a function, a Consumer, and executes it only if the value is present.
 
 So instead of writing something like:
 
@@ -160,13 +160,13 @@ So instead of writing something like:
 
 You can write:
 
-<pre class="lang:java decode:true">optional.ifPresent(val -&gt; doSomething(val))</pre>
+<pre class="lang:java decode:true">optional.ifPresent(val -> doSomething(val))</pre>
 
 or if you prefer:
 
 <pre class="lang:java decode:true">optional.ifPresent(this::doSomething)</pre>
 
-But let&#8217;s have a look to a proper example.
+But let's have a look to a proper example.
 
 We define a Pojo class, useful also for the following examples, that represents a Loyalty card.
 
@@ -191,14 +191,14 @@ We define a Pojo class, useful also for the following examples, that represent
 
 We want to add 3 points to the loyalty card if the loyalty card is actually present.
 
-_Node: In the following example we&#8217;re going to use Mockito to mock LoyaltyCard class. Don&#8217;t worry if you are not familiar with Mockito, I&#8217;ll add some comments to the code._
+_Node: In the following example we're going to use Mockito to mock LoyaltyCard class. Don't worry if you are not familiar with Mockito, I'll add some comments to the code._
 
 <pre class="lang:java decode:true">@Test
 	public void ifPresent_whenCardPresent_thenPointsAdded(){
 		LoyaltyCard mockedCard = mock(LoyaltyCard.class);
-		Optional&lt;LoyaltyCard&gt; loyaltyCard = Optional.of(mockedCard);
+		Optional<LoyaltyCard> loyaltyCard = Optional.of(mockedCard);
 		
-		loyaltyCard.ifPresent(c -&gt; c.addPoints(3));
+		loyaltyCard.ifPresent(c -> c.addPoints(3));
 		
 		//Verify addPoints method has been called 1 time and with input=3
 		verify(mockedCard, times(1)).addPoints(3);
@@ -217,7 +217,7 @@ In this example we want to retrieve the number of points of our loyalty card if 
 		LoyaltyCard mockedCard = mock(LoyaltyCard.class);
 		when(mockedCard.getPoints()).thenReturn(3);
 		
-		Optional&lt;LoyaltyCard&gt; card = Optional.of(mockedCard);
+		Optional<LoyaltyCard> card = Optional.of(mockedCard);
 		
 		int point = card.map(LoyaltyCard::getPoints)
 				   		.orElse(0);
@@ -227,7 +227,7 @@ In this example we want to retrieve the number of points of our loyalty card if 
 
 <pre class="lang:default decode:true ">@Test
 	public void map_whenCardNotPresent_thenZero(){
-		Optional&lt;LoyaltyCard&gt; card = Optional.empty();
+		Optional<LoyaltyCard> card = Optional.empty();
 		
 		int point = card.map(LoyaltyCard::getPoints)
 				   		.orElse(0);
@@ -237,9 +237,9 @@ In this example we want to retrieve the number of points of our loyalty card if 
 
 ## 6. Optional _flatMap_ example
 
-_flatMap()_ it&#8217;s really similar to _map() _but when output is already an _Optional_ it doesn&#8217;t wrap it with another _Optional_. So instead of having _Optional<Optional<T>>_ if will just return _Optional<T>_.
+_flatMap()_ it's really similar to _map() _but when output is already an _Optional_ it doesn't wrap it with another _Optional_. So instead of having _Optional<Optional<T>>_ if will just return _Optional<T>_.
 
-Let me clarify it using an example. Let&#8217;s define a new class, called _Gift_.
+Let me clarify it using an example. Let's define a new class, called _Gift_.
 
 <pre class="lang:java decode:true ">public class Gift {
 
@@ -249,9 +249,9 @@ Let me clarify it using an example. Let&#8217;s define a new class, called _Gift
 
 }</pre>
 
-And let&#8217;s define a new method to our LoyaltyCard class that returns an _Optional_ containing the last _Gift_ chosen. Since we are going to mock the result of this method, we don&#8217;t really care about its implementation.
+And let's define a new method to our LoyaltyCard class that returns an _Optional_ containing the last _Gift_ chosen. Since we are going to mock the result of this method, we don't really care about its implementation.
 
-<pre class="lang:java decode:true">public Optional&lt;Gift&gt; getLastGift(){
+<pre class="lang:java decode:true">public Optional<Gift> getLastGift(){
 		//whatever
 		return Optional.empty();
 	}</pre>
@@ -269,7 +269,7 @@ The output will be an _Optional<Optional<Gift>> _that is not what we want, so f
 		
 		LoyaltyCard mockedCard = mock(LoyaltyCard.class);
 		when(mockedCard.getLastGift()).thenReturn(Optional.of(mockedGift));
-		Optional&lt;LoyaltyCard&gt; card = Optional.of(mockedCard);
+		Optional<LoyaltyCard> card = Optional.of(mockedCard);
 		
 		String giftName = card.flatMap(LoyaltyCard::getLastGift)
 							  .map(Gift::getName)

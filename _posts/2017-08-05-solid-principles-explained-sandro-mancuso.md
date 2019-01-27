@@ -41,9 +41,9 @@ Have you ever heard **SOLID** principles?
 
 ### Easy to understand, easier to violate
 
-Those principles are not difficult to understand when you initially study them, however, stick to them in your daily job is not trivial at all. Let&#8217;s make an example on the first one &#8211; Single Responsibility Principle &#8211; the easiest and probably the most violated one.
+Those principles are not difficult to understand when you initially study them, however, stick to them in your daily job is not trivial at all. Let's make an example on the first one &#8211; Single Responsibility Principle &#8211; the easiest and probably the most violated one.
 
-Let&#8217;s imagine you have a function named _calculateTotalPrice(..) _and it&#8217;s long, I don&#8217;t know, let&#8217;s say 50 lines of code. **Is the single responsibility principle respected?**
+Let's imagine you have a function named _calculateTotalPrice(..) _and it's long, I don't know, let's say 50 lines of code. **Is the single responsibility principle respected?**
 
 Maybe yes, is doing one thing: calculate the total price of the cart. However, when we look at the code we see something like that:
 
@@ -66,7 +66,7 @@ It does **five** things:
 
 If one of those **five** things changes, we have to touch this method &#8211; clearly it has more than one responsibility.
 
-**It&#8217;s really easy to violate them without even realizing it.**
+**It's really easy to violate them without even realizing it.**
 
 ### &#8220;Functional is cool, but do you know OO&#8221; by Sandro Mancuso
 
