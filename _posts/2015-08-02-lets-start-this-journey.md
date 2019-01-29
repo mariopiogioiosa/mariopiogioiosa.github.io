@@ -16,7 +16,8 @@ categories:
 
 Ciao!
 
-I'm Mario and I'm going to start this new adventure thanks to <strong><a href="http://simpleprogrammer.com" target="_blank" rel="noopener">John Sonmez</a></strong>.<br /> I've been following his blog for a long time, but only a couple of weeks ago I've decided to subscribe to his free course <a href="http://devcareerboost.com/blog-course/?__s=1asqmzoe3ehqikxswcfy&utm_campaign=lesson-5-do-you-know-how-to-get-traffic-for-your-blog&utm_medium=email&utm_source=how-to-create-a-blog-that-boosts-your-career-course" target="_blank" rel="noopener">How To Build A Blog That Will Boost Your Career</a>.
+I'm Mario and I'm going to start this new adventure thanks to [John Sonmez](http://simpleprogrammer.com). I've been following his blog for a long time, but only a couple of weeks ago I've decided to subscribe to his free course 
+[How To Build A Blog That Will Boost Your Career](http://devcareerboost.com/blog-course/?__s=1asqmzoe3ehqikxswcfy&utm_campaign=lesson-5-do-you-know-how-to-get-traffic-for-your-blog&utm_medium=email&utm_source=how-to-create-a-blog-that-boosts-your-career-course).
 
 I've never paused to properly think about how valuable it could be having a blog or works on something that's simply yours. When I say properly think" I mean consider finding hours to work on that, to get started, to forget about perfection" and just jump into it. </span><span class="s1">And now…here we go!</span>
 
@@ -37,7 +38,9 @@ Simply as that!
 
 #### In a nutshell: what is this course about?
 
-It's a course focused on boosting your career thanks to your blog, on helping you find a better job, have a better salary, **MAKE THE DIFFERENCE** and **be in the top 1% of all software developers**! It helps you find a theme that enhances your passions, know what to write about, get some traffic on it and keep it up. Moreover, it's a specialized course, it's for software engineers, so it will be easy find an answer to the questions you may have..And if you can't find an answer, drop him an email and he will answer. I promise. At least, that's what happened to me.
+It's a course focused on boosting your career thanks to your blog, on helping you find a better job, have a better salary, **MAKE THE DIFFERENCE** and **be in the top 1% of all software developers**! 
+It helps you find a theme that enhances your passions, know what to write about, get some traffic on it and keep it up. Moreover, it's a specialized course, it's for software engineers, so it will be easy find an answer to the questions you may have..And if you can't find an answer, drop him an email and he will answer. 
+I promise. At least, that's what happened to me.
 
 That's why, in my opinion, this tutorial is completely different from what you can find on the web. I really recommend you to subscribe and..let me know what you think about this course.
 
