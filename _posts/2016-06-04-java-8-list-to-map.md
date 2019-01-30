@@ -16,13 +16,14 @@ tags:
   - stream
   - toMap
 ---
-An example to convert a _List<?>_ to a _Map<K,V>_ using Java 8 _[Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_.
+An example to convert a `List<?>` to a `Map<K,V>` using Java 8 _[Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_.
 
 ### Java 8 - Collectors.toMap()
 
 Let's define a Pojo class:
 
-<pre class="lang:java decode:true">public class Person {
+{% highlight java %}
+public class Person {
 
 	private String email;
 	private String name;
@@ -34,19 +35,20 @@ Let's define a Pojo class:
 		this.age = age;
 	}
 	
-	//Getters, setters 
+	//Getters 
 
         @Override
         public String toString() {
             return "Person [email=" + email + ", name=" + name + ", age=" + age + "]";
-	}
+        }
 
 }
-</pre>
+{% endhighlight %}
 
-In the first example, we convert a _List<Person>_ in a _Map<String, Person>_ that has email as key and the object itself as value.
+In the first example, we convert a `List<Person>` in a `Map<String, Person>` that has email as key and the object itself as value.
 
-<pre class="lang:default decode:true">List<Person> people = Arrays.asList(
+{% highlight java %}
+List<Person> people = Arrays.asList(
      new Person("mario@reversecoding.net", "Mario", 27),
      new Person("luigi@reversecoding.net", "Luigi", 30),
      new Person("steve@reversecoding.net", "Steve", 20)
@@ -58,77 +60,88 @@ In the first example, we convert a _List<Person>_ in a _Map<String, Person>_ t
 		
  System.out.println(mapEmailPerson);
 
-</pre>
+{% endhighlight %}
 
 The output will be:
 
-<pre class="theme:dark-terminal striped:false lang:default decode:true">{steve@reversecoding.net=Person [email=steve@reversecoding.net, name=Steve, age=20], 
+{% highlight java %}
+{steve@reversecoding.net=Person [email=steve@reversecoding.net, name=Steve, age=20], 
  mario@reversecoding.net=Person [email=mario@reversecoding.net, name=Mario, age=27], 
  luigi@reversecoding.net=Person [email=luigi@reversecoding.net, name=Luigi, age=30]}
-</pre>
+{% endhighlight %}
+
 
 Or using lambda:
 
-<pre class="lang:java decode:true" title="Using lambda">Map<String, Person> mapEmailPerson = 
+{% highlight java %}
+Map<String, Person> mapEmailPerson = 
          people.stream()				
                .collect(Collectors.toMap(person -> person.getEmail(), person -> person));
 		
-System.out.println(mapEmailPerson);</pre>
+System.out.println(mapEmailPerson);
+{% endhighlight %}
 
 Output:
 
-<pre class="theme:dark-terminal lang:default decode:true">{steve@reversecoding.net=Person [email=steve@reversecoding.net, name=Steve, age=20],
+{% highlight java %}
+{steve@reversecoding.net=Person [email=steve@reversecoding.net, name=Steve, age=20],
  mario@reversecoding.net=Person [email=mario@reversecoding.net, name=Mario, age=27], 
 luigi@reversecoding.net=Person [email=luigi@reversecoding.net, name=Luigi, age=30]}
-</pre>
+{% endhighlight %}
 
-### 
 
 ### Let's break this out
 
-First of all, we create a _Stream_ of _Person_ from the _List<Person>_ defined_._
+First of all, we create a `Stream` of `Person` from the `List<Person>` defined.
 
-Then we collect this stream in a _Map_. Java 8 helps us to define the needed _Collector_ by providing us the method: [Collectors.toMap()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toMap-java.util.function.Function-java.util.function.Function-).
+Then we collect this stream in a `Map`. Java 8 helps us to define the needed `Collector` by providing us the method: [Collectors.toMap()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toMap-java.util.function.Function-java.util.function.Function-).
 
-Collectors.toMap() takes two functions - one for mapping the key and one for the value - and returns a `Collector` that accumulates elements into a `Map.`
+`Collectors.toMap()` takes two functions - one for mapping the key and one for the value - and returns a `Collector` that accumulates elements into a `Map.`
 
-Since we are working with _Stream_ of Person - our input it's an object _Person_.
+Since we are working with `Stream` of Person - our input it's an object `Person`.
 
-We have chosen the email as key, so that is a function that given the input - _Person_ - returns its email:
+We have chosen the email as key, so that is a function that given the input - `Person` - returns its email:
 
-<pre class="lang:default decode:true">//Given a person, we get his email
+{% highlight java %}
+//Given a person, we get his email
 person -> person.getEmail()
 
 //Or using method reference
 Person::getEmail()
 
-</pre>
+{% endhighlight %}
 
 and then the object itself as value, so it's just an identity function:
 
-<pre class="lang:default decode:true">//Given a person, we want as value the person itself
+{% highlight java %}
+//Given a person, we want as value the person itself
 person -> person
 
 //Or 
-Function.identity()</pre>
+Function.identity()
+{% endhighlight %}
 
-These are the parameters for _toMap._
+These are the parameters for `toMap.`
 
 ### Another example
 
-Given a _List<Person>_ we want to create a _Map<String, Integer>_ that contains the name as key and the age as value.
+Given a `List<Person>` we want to create a `Map<String, Integer>` that contains the name as key and the age as value.
 
-We just need to change the two parameters of the _Collectors.toMap_, by specifying:
+We just need to change the two parameters of the `Collectors.toMap`, by specifying:
 
-<pre class="lang:default decode:true">//Name as key
+{% highlight java %}
+//Name as key
 person -> person.getName()
 
 //Age as value
-person -> person.getAge()</pre>
+person -> person.getAge();
+{% endhighlight %}
+
 
 So the code will be:
 
-<pre class="lang:java decode:true">List<Person> people = Arrays.asList(
+{% highlight java %}
+List<Person> people = Arrays.asList(
     new Person("mario@reversecoding.net", "Mario", 27),
     new Person("luigi@reversecoding.net", "Luigi", 30),
     new Person("steve@reversecoding.net", "Steve", 20)
@@ -140,25 +153,25 @@ Map<String, Integer> mapNameAge =
 		
 System.out.println(mapNameAge);
 
-</pre>
+{% endhighlight %}
 
 Output:
 
-<pre class="lang:default decode:true ">{Steve=20, Luigi=30, Mario=27}</pre>
+{% highlight java %}
+{Steve=20, Luigi=30, Mario=27}
+{% endhighlight %}
 
-If you are a good observer you may have noticed that the order hasn't been respected. That's because the default implementation used by _toMap_ is the [_HashMap_](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) that does not guarantee the order of the map.
-
-&nbsp;
+If you are a good observer you may have noticed that the order hasn't been respected. That's because the default implementation used by _toMap_ is the 
+[_HashMap_](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html) that does not guarantee the order of the map.
 
 ### Java 8 - Collectors.toMap with a LinkedHashMap
 
-&nbsp;
-
 If we want to preserve the order we should use a _[LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html) _instead of the HashMap.
 
-Let's try the previous example by passing a _LinkedHashMap_ to Collectors.toMap()
+Let's try the previous example by passing a `LinkedHashMap_ to Collectors.toMap()
 
-<pre class="lang:java decode:true ">Map<String, Integer> mapNameAge = 
+{% highlight java %}
+Map<String, Integer> mapNameAge = 
 	people.stream()
 		  .collect(Collectors.toMap(
 				  Person::getName, 
@@ -167,11 +180,14 @@ Let's try the previous example by passing a _LinkedHashMap_ to Collectors.toMap
 				  LinkedHashMap::new
 				  ));
 
-System.out.println(mapNameAge);</pre>
+System.out.println(mapNameAge);
+{% endhighlight %}
 
 Output:
 
-<pre class="theme:dark-terminal lang:default decode:true">{Mario=27, Luigi=30, Steve=20}</pre>
+{% highlight java %}
+{Mario=27, Luigi=30, Steve=20}
+{% endhighlight %}
 
 We are using the definition of [toMap that takes four parameters](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toMap-java.util.function.Function-java.util.function.Function-java.util.function.BinaryOperator-java.util.function.Supplier-):
 
@@ -184,4 +200,4 @@ We've already discussed the first two parameters.
 
 In case of a collision we just want to throw an exception, so as third parameter we define that. In the example, we used the same implementation of the static method _throwingMerger _defined in the java.util.stream.Collectors class.
 
-The fourth parameter it's the one in which we define a function that returns our _LinkedHashMap_.
+The fourth parameter it's the one in which we define a function that returns our `LinkedHashMap`.
