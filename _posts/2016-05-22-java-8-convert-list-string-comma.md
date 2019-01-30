@@ -83,9 +83,9 @@ public static void main(String[] args) {
 {% endhighlight %}
 
 
-As you can see it's much more verbose and easier to make mistakes like forgetting to remove the last comma. You can implement this in several ways &#8211; for example by moving the logic that removes the last comma inside the for-loop &#8211; but none will be so explicative and immediate to understand as the declarative solution expressed in Java 8.
+As you can see it's much more verbose and easier to make mistakes like forgetting to remove the last comma. You can implement this in several ways - for example by moving the logic that removes the last comma inside the for-loop - but none will be so explicative and immediate to understand as the declarative solution expressed in Java 8.
 
-The focus should be on what you want to do &#8211; joining a _List_ of _String_ &#8211; not on how.
+The focus should be on what you want to do - joining a _List_ of _String_ - not on how.
 
 &nbsp;
 

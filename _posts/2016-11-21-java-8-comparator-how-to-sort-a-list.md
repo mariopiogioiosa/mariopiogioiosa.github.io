@@ -1,6 +1,6 @@
 ---
 id: 136
-title: 'Java 8 Comparator &#8211; How to sort a List'
+title: 'Java 8 Comparator - How to sort a List'
 date: 2016-11-21T23:10:17+00:00
 author: Mario Pio Gioiosa
 layout: post
@@ -44,7 +44,7 @@ System.out.println(cities);
 </p>
 
 <p style="text-align: justify;">
-  Basically, in Java 7 we were using <em>Collections.sort()</em> that was accepting a <em>List</em> and, eventually, a <em>Comparator</em> &#8211;  in Java 8 we have the new <em><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-" target="_blank" rel="noopener">List.sort()</a></em> that accepts a <em>Comparator</em><em>.</em>
+  Basically, in Java 7 we were using <em>Collections.sort()</em> that was accepting a <em>List</em> and, eventually, a <em>Comparator</em> -  in Java 8 we have the new <em><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-" target="_blank" rel="noopener">List.sort()</a></em> that accepts a <em>Comparator</em><em>.</em>
 </p>
 
 ## 2. Sort a List of Integer
@@ -58,7 +58,7 @@ System.out.println(numbers); //[1, 2, 4, 6, 9]</pre>
 ## 3. Sort a List by String field
 
 <p style="text-align: justify;">
-  Let's suppose we've our <em>Movie</em> class and we want to sort our <em>List</em> &#8220;by title&#8221;. We can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" target="_blank" rel="noopener"><em>Comparator.comparing()</em></a> and pass a function that extracts the field to use for sorting &#8211; title &#8211; in this example.
+  Let's suppose we've our <em>Movie</em> class and we want to sort our <em>List</em> &#8220;by title&#8221;. We can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" target="_blank" rel="noopener"><em>Comparator.comparing()</em></a> and pass a function that extracts the field to use for sorting - title - in this example.
 </p>
 
 <pre class="lang:default decode:true">List<Movie> movies = Arrays.asList(
@@ -79,7 +79,7 @@ Movie{title='Lord of the rings'}
 Movie{title='Pulp fiction'}</pre>
 
 <p style="text-align: justify;">
-  As you've probably noticed we haven't passed any <em>Comparator </em>but the <em>List</em> is correctly sorted. That's because of the title &#8211; the extracted field &#8211; that is a <em>String</em> and <em>String</em> implements <em>Comparable</em> interface. If you peek at <em>Comparator.comparing()</em> implementation you will see that it calls <strong><em>compareTo</em></strong> on the extracted key.
+  As you've probably noticed we haven't passed any <em>Comparator </em>but the <em>List</em> is correctly sorted. That's because of the title - the extracted field - that is a <em>String</em> and <em>String</em> implements <em>Comparable</em> interface. If you peek at <em>Comparator.comparing()</em> implementation you will see that it calls <strong><em>compareTo</em></strong> on the extracted key.
 </p>
 
 <pre class="lang:default decode:true">return (Comparator<T> & Serializable)
@@ -112,7 +112,7 @@ movies.forEach(System.out::println);</pre>
 
 ## 5. Sort a List with custom Comparator
 
-In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. Our _Movie_ class has a new field &#8211; &#8220;starred&#8221; &#8211; set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List. _
+In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. Our _Movie_ class has a new field - &#8220;starred&#8221; - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List. _
 
 <pre class="lang:default decode:true">List<Movie> movies = Arrays.asList(
         new Movie("Lord of the rings", 8.8, true),
@@ -185,4 +185,4 @@ Movie{starred=true, title='Carlito's way', rating=7.9}
 Movie{starred=false, title='Pulp fiction', rating=8.9}
 Movie{starred=false, title='Back to the future', rating=8.5}</pre>
 
-As you've seen we first sort by starred and then by rating &#8211; both reversed since we want the highest value and true first.
+As you've seen we first sort by starred and then by rating - both reversed since we want the highest value and true first.

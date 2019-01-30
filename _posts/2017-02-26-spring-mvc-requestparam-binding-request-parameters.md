@@ -55,7 +55,7 @@ public void getCategoryParam() throws Exception {
 }
 {% endhighlight %}
 
-In the test above we are using [Spring MVC](http://docs.spring.io/spring-security/site/docs/current/reference/html/test-mockmvc.html) test library to perform an HTTP GET request to **_/books_** with a parameter &#8211; _category_ &#8211; which has value &#8220;_java&#8221;._ Then we verify that the response status is OK (code: 200) and that the model contains an attribute named _category_ and that its value is &#8220;java&#8221;.
+In the test above we are using [Spring MVC](http://docs.spring.io/spring-security/site/docs/current/reference/html/test-mockmvc.html) test library to perform an HTTP GET request to **_/books_** with a parameter - _category_ - which has value &#8220;_java&#8221;._ Then we verify that the response status is OK (code: 200) and that the model contains an attribute named _category_ and that its value is &#8220;java&#8221;.
 
 _For this test we've quickly setup a Spring Boot project, you can find the pom.xml [at the end of this article](#pom-xml)._
 
@@ -85,7 +85,7 @@ In the example above, since** **both variable and request parameter name is &
 
 ### 3. Auto type conversion
 
-If the request parameter is not a _`String`_ but &#8211; for example &#8211; a number we can bind it to the corresponding type. Let's say we have a call like this:
+If the request parameter is not a _`String`_ but - for example - a number we can bind it to the corresponding type. Let's say we have a call like this:
 
 `/books?rate=5&maxprice=150.00`
 
@@ -212,7 +212,7 @@ We can also perform a call in which we specify several values for a parameter, l
 
 `/books?authors=martin&authors=tolkien`
 
-In this case, we can bind it using a _`List`_ or an array_ &#8211; _this is with a _`List`_:
+In this case, we can bind it using a _`List`_ or an array_ - _this is with a _`List`_:
 
 {% highlight java %}
 @RequestMapping("/books")
@@ -357,7 +357,7 @@ Despite it might look convenient, I prefer to always specify the annotation sinc
 
 ### 9. Bind with a field of an object
 
-In a similar way, if we pass as argument a simple pojo object that has a field &#8211; with getter and setter &#8211; named like the request parameter, the value of the request parameter will be stored in this field.
+In a similar way, if we pass as argument a simple pojo object that has a field - with getter and setter - named like the request parameter, the value of the request parameter will be stored in this field.
 
 Let's define our pojo class:
 
