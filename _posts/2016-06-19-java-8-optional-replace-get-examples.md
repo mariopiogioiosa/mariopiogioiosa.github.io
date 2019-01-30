@@ -8,10 +8,6 @@ guid: http://reversecoding.net/?p=78
 permalink: /java-8-optional-replace-get-examples/
 site_layout:
   - full-width
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - Java 8
 tags:

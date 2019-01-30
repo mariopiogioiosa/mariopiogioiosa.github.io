@@ -1,19 +1,14 @@
 ---
 id: 6
-title: 'Let's start this journey!'
+title: "Let's start this journey!"
 date: 2015-08-02T15:56:43+00:00
 author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=6
 permalink: /lets-start-this-journey/
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - Blog
 ---
-
 Ciao!
 
 I'm Mario and I'm going to start this new adventure thanks to [John Sonmez](http://simpleprogrammer.com). I've been following his blog for a long time, but only a couple of weeks ago I've decided to subscribe to his free course 

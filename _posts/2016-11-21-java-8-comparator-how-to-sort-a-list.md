@@ -6,10 +6,6 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=136
 permalink: /java-8-comparator-how-to-sort-a-list/
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - Java 8
 tags:

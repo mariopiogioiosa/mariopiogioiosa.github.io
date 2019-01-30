@@ -1,17 +1,11 @@
 ---
 id: 96
-title: 'Java 8 Stream &#8211; From List to Map'
+title: 'Java 8 Stream - From List to Map'
 date: 2016-06-04T15:34:33+00:00
 author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=96
 permalink: /java-8-list-to-map/
-site_layout:
-  - full-width
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - Java 8
 tags:
@@ -24,7 +18,7 @@ tags:
 ---
 An example to convert a _List<?>_ to a _Map<K,V>_ using Java 8 _[Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_.
 
-### Java 8 &#8211; Collectors.toMap()
+### Java 8 - Collectors.toMap()
 
 Let's define a Pojo class:
 
@@ -96,11 +90,11 @@ First of all, we create a _Stream_ of _Person_ from the _List<Person>_ defined_
 
 Then we collect this stream in a _Map_. Java 8 helps us to define the needed _Collector_ by providing us the method: [Collectors.toMap()](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toMap-java.util.function.Function-java.util.function.Function-).
 
-Collectors.toMap() takes two functions &#8211; one for mapping the key and one for the value &#8211; and returns a `Collector` that accumulates elements into a `Map.`
+Collectors.toMap() takes two functions - one for mapping the key and one for the value - and returns a `Collector` that accumulates elements into a `Map.`
 
-Since we are working with _Stream_ of Person &#8211; our input it's an object _Person_.
+Since we are working with _Stream_ of Person - our input it's an object _Person_.
 
-We have chosen the email as key, so that is a function that given the input &#8211; _Person_ &#8211; returns its email:
+We have chosen the email as key, so that is a function that given the input - _Person_ - returns its email:
 
 <pre class="lang:default decode:true">//Given a person, we get his email
 person -> person.getEmail()
@@ -156,7 +150,7 @@ If you are a good observer you may have noticed that the order hasn't been respe
 
 &nbsp;
 
-### Java 8 &#8211; Collectors.toMap with a LinkedHashMap
+### Java 8 - Collectors.toMap with a LinkedHashMap
 
 &nbsp;
 
@@ -181,10 +175,10 @@ Output:
 
 We are using the definition of [toMap that takes four parameters](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html#toMap-java.util.function.Function-java.util.function.Function-java.util.function.BinaryOperator-java.util.function.Supplier-):
 
-  * `keyMapper` &#8211; a mapping function to produce keys
-  * `valueMapper` &#8211; a mapping function to produce values
-  * `mergeFunction` &#8211; a merge function used to resolve collisions between values associated with the same key
-  * `mapSupplier` &#8211; a function which returns a new, empty `Map` into which the results will be inserted
+  * `keyMapper` - a mapping function to produce keys
+  * `valueMapper` - a mapping function to produce values
+  * `mergeFunction` - a merge function used to resolve collisions between values associated with the same key
+  * `mapSupplier` - a function which returns a new, empty `Map` into which the results will be inserted
 
 We've already discussed the first two parameters.
 

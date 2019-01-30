@@ -6,10 +6,6 @@ author: Mario Pio Gioiosa
 layout: post
 guid: https://reversecoding.net/?p=251
 permalink: /solid-principles-explained-sandro-mancuso/
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - OO
 tags:

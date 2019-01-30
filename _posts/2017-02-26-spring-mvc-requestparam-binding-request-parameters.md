@@ -6,10 +6,6 @@ author: Mario Pio Gioiosa
 layout: post
 guid: https://reversecoding.net/?p=191
 permalink: /spring-mvc-requestparam-binding-request-parameters/
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - Spring MVC
 tags:

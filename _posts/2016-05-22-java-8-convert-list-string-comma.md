@@ -6,10 +6,6 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=62
 permalink: /java-8-convert-list-string-comma/
-hefo_before:
-  - "0"
-hefo_after:
-  - "0"
 categories:
   - Java 8
 tags:
