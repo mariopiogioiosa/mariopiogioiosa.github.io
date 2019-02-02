@@ -43,12 +43,14 @@ Let's imagine you have a function named _calculateTotalPrice(..) _and it's long
 
 Maybe yes, is doing one thing: calculate the total price of the cart. However, when we look at the code we see something like that:
 
-<pre class="lang:default decode:true">Price calculateTotalPrice(){
+{% highlight java %}
+Price calculateTotalPrice(){
   //15 lines to multiply price of the single product by ordered quantity 
   //10 to sum all the entries of the cart
   //15 to apply discounts
   //10 lines to apply taxes
-}</pre>
+}
+{% endhighlight %}
 
 Are you still convinced the method is following Single Responsibility Principle? Clearly not.
 
@@ -64,12 +66,10 @@ If one of those **five** things changes, we have to touch this method - clearly 
 
 **It's really easy to violate them without even realizing it.**
 
-### &#8220;Functional is cool, but do you know OO&#8221; by Sandro Mancuso
+### Functional is cool, but do you know OO: by Sandro Mancuso
 
 So today we will not speak about [Java 8](https://reversecoding.net/category/java-8/) or [Spring MVC](https://reversecoding.net/category/spring-mvc/) but Objected Oriented principles.
 
 We start by suggesting this talk by [Sandro Mancuso](https://twitter.com/sandromancuso).
 
-&nbsp;
-
-<span class="embed-youtube" style="text-align:center; display: block;"></span>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oiFYPAel-KY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
