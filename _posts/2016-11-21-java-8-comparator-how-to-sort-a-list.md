@@ -15,9 +15,7 @@ tags:
   - sort a list
   - sorting
 ---
-<p style="text-align: justify;">
-  In this article, we're going to see several examples on how to sort a <em>List</em> in Java 8.
-</p>
+In this article, we're going to see several examples on how to sort a `List` in Java 8.
 
 ## 1. Sort a List of String alphabetically
 
@@ -39,17 +37,13 @@ System.out.println(cities);
 cities.sort(Comparator.naturalOrder());
 System.out.println(cities);
 //[Milan, New Delhi, San Francisco, Tokyo, london]
-
 {% endhighlight %}
 
+By purpose, we've written London with _'L'_ in low-case to better highlight difference between [Comparator.naturalOrder()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#naturalOrder--) 
+that returns a [Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html) that sorts by placing capital letters first 
+and [String.CASE_INSENSITIVE_ORDER](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER) that returns a case-insensitive `Comparator`.
 
-<p style="text-align: justify;">
-  By purpose, we've written London with &#8220;L&#8221; in low-case to better highlight difference between <em><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#naturalOrder--" target="_blank" rel="noopener">Comparator.naturalOrder()</a> </em>that<em> </em>returns a <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" rel="noopener"><em>Comparator</em></a> that sorts by placing capital letters first and <em><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER">String.CASE_INSENSITIVE_ORDER</a> </em>that returns a case-insensitive <em>Comparator</em>.
-</p>
-
-<p style="text-align: justify;">
-  Basically, in Java 7 we were using `Collections.sort()` that was accepting a <em>List</em> and, eventually, a <em>Comparator</em> -  in Java 8 we have the new <em><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-" target="_blank" rel="noopener">List.sort()</a></em> that accepts a <em>Comparator</em><em>.</em>
-</p>
+Basically, in Java 7 we were using `Collections.sort()` that was accepting a `List` and, eventually, a `Comparator` -  in Java 8 we have the new [List.sort()](http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-)</a></em> that accepts a `Comparator`.
 
 ## 2. Sort a List of Integer
 
@@ -64,9 +58,7 @@ System.out.println(numbers); //[1, 2, 4, 6, 9]
 
 ## 3. Sort a List by String field
 
-<p style="text-align: justify;">
-  Let's suppose we've our <em>Movie</em> class and we want to sort our <em>List</em> &#8220;by title&#8221;. We can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" target="_blank" rel="noopener"><em>Comparator.comparing()</em></a> and pass a function that extracts the field to use for sorting - title - in this example.
-</p>
+Let's suppose we've our `Movie` class and we want to sort our `List` by title. We can use [Comparator.comparing()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-) and pass a function that extracts the field to use for sorting - title - in this example.
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -90,10 +82,8 @@ Movie{title='Lord of the rings'}
 Movie{title='Pulp fiction'}
 {% endhighlight %}
 
-
-<p style="text-align: justify;">
-  As you've probably noticed we haven't passed any <em>Comparator </em>but the <em>List</em> is correctly sorted. That's because of the title - the extracted field - that is a <em>String</em> and <em>String</em> implements <em>Comparable</em> interface. If you peek at <em>Comparator.comparing()</em> implementation you will see that it calls <strong><em>compareTo</em></strong> on the extracted key.
-</p>
+As you've probably noticed we haven't passed any `Comparator` but the `List` is correctly sorted. That's because of the title - the extracted field - that is a `String` and `String` implements `Comparable` interface. 
+If you peek at `Comparator.comparing()` implementation you will see that it calls _`compareTo`_ on the extracted key.
 
 {% highlight java %}
 return (Comparator<T> & Serializable)
@@ -103,9 +93,8 @@ return (Comparator<T> & Serializable)
 
 ## 4. Sort a List by double field
 
-<p style="text-align: justify;">
-  In a similar way, we can use <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparingDouble-java.util.function.ToDoubleFunction-" target="_blank" rel="noopener"><em>Comparator.comparingDouble()</em></a> for comparing <em>double</em> value. In the example, we want to order our <em>List</em> of <em>Movie</em> by rating, from the highest to the lowest.
-</p>
+In a similar way, we can use [Comparator.comparingDouble()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparingDouble-java.util.function.ToDoubleFunction-) for comparing `double` value. 
+In the example, we want to order our `List` of `Movie` by rating, from the highest to the lowest.
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -120,18 +109,15 @@ movies.sort(Comparator.comparingDouble(Movie::getRating)
 movies.forEach(System.out::println);
 {% endhighlight %}
 
+We used [reversed](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#reversed--) function on the `Comparator` in order to invert default natural-order that is from lowest to highest. 
+`Comparator.comparingDouble()` uses `Double.compare()` under the hood.
 
-<p style="text-align: justify;">
-  We used <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#reversed--" target="_blank" rel="noopener"><em>reversed</em></a> function on the <em>Comparator</em> in order to invert default natural-order that is from lowest to highest. <em>Comparator.comparingDouble()</em> uses <em>Double.compare()</em> under the hood.
-</p>
-
-<p style="text-align: justify;">
-  If you need to compare <em>int</em> or <em>long</em> you can use <em>comparingInt()</em> and <em>comparingLong() </em>respectively<em>.</em>
-</p>
+If you need to compare `int` or `long` you can use `comparingInt()` and `comparingLong()` respectively.
 
 ## 5. Sort a List with custom Comparator
 
-In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. Our _Movie_ class has a new field - &#8220;starred&#8221; - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List. _
+In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. 
+Our _Movie_ class has a new field - starred - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List_. 
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -188,7 +174,8 @@ movies.sort(Comparator.comparing(Movie::getStarred, (star1, star2) -> {
 {% endhighlight %}
 
 
-In the latest example _Comparator.comparing()_ takes as first parameter the function to extract the key to use for sorting and a Comparator as second parameter. This _Comparator_ uses the extracted keys for comparison, _star1_ and _star2 _are indeed _boolean _and represents _m1.getStarred()_ and _m2.getStarred() _respectively.
+In the latest example _Comparator.comparing()_ takes as first parameter the function to extract the key to use for sorting and a _Comparator_ as second parameter. 
+This _Comparator_ uses the extracted keys for comparison, _star1_ and _star2_ are indeed `boolean` and represents _m1.getStarred()_ and _m2.getStarred()_ respectively.
 
 ## 6. Sort a List with chain of Comparator
 
