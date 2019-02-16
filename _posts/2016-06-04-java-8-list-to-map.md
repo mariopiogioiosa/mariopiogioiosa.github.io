@@ -19,7 +19,6 @@ tags:
 An example to convert a `List<?>` to a `Map<K,V>` using Java 8 _[Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_.
 
 ### Java 8 - Collectors.toMap()
-
 Let's define a Pojo class:
 
 {% highlight java %}
@@ -37,15 +36,11 @@ public class Person {
 	
 	//Getters 
 
-        @Override
-        public String toString() {
-            return "Person [email=" + email + ", name=" + name + ", age=" + age + "]";
-        }
-
+  //toString
 }
 {% endhighlight %}
 
-In the first example, we convert a `List<Person>` in a `Map<String, Person>` that has email as key and the object itself as value.
+In the first example, we convert a `List<Person>` in a `Map<String, Person>` that has the email as key and the object itself as value.
 
 {% highlight java %}
 List<Person> people = Arrays.asList(
