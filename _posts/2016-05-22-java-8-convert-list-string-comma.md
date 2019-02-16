@@ -113,80 +113,80 @@ import java.util.List;
 import org.junit.Test;
 
 public class CsvUtil {
-	private static final String SEPARATOR = ",";
+    private static final String SEPARATOR = ",";
 
-	public static String toCsv(List<String> listToConvert){
-		return String.join(SEPARATOR, listToConvert);
-	}
+    public static String toCsv(List<String> listToConvert){
+        return String.join(SEPARATOR, listToConvert);
+    }
 
-	@Test
-	public void toCsv_csvFromListOfString(){
-		List<String> cities = Arrays.asList(
-				"Milan", "London", "New York", "San Francisco");
+    @Test
+    public void toCsv_csvFromListOfString(){
+        List<String> cities = Arrays.asList(
+                "Milan", "London", "New York", "San Francisco");
 
-		String expected = "Milan,London,New York,San Francisco";
+        String expected = "Milan,London,New York,San Francisco";
 
-		assertEquals(expected, toCsv(cities));
-	}
+        assertEquals(expected, toCsv(cities));
+    }
 
 
-	public static String toCsvStream(List<String> listToConvert){
-		return listToConvert.stream()
-				    .collect(joining(SEPARATOR));
-	}
+    public static String toCsvStream(List<String> listToConvert){
+        return listToConvert.stream()
+                    .collect(joining(SEPARATOR));
+    }
 
-	@Test
-	public void toCsvStream_csvFromListOfString(){
-		List<String> cities = Arrays.asList(
-				"Milan", "London", "New York", "San Francisco");
+    @Test
+    public void toCsvStream_csvFromListOfString(){
+        List<String> cities = Arrays.asList(
+                "Milan", "London", "New York", "San Francisco");
 
-		String expected = "Milan,London,New York,San Francisco";
+        String expected = "Milan,London,New York,San Francisco";
 
-		assertEquals(expected, toCsv(cities));
-	}
+        assertEquals(expected, toCsv(cities));
+    }
 
-	public static String toCsvJava7(List<String> listToConvert){
-		StringBuilder csvBuilder = new StringBuilder();
+    public static String toCsvJava7(List<String> listToConvert){
+        StringBuilder csvBuilder = new StringBuilder();
 
-		for(String s : listToConvert){
-			csvBuilder.append(s);
-			csvBuilder.append(SEPARATOR);
-		}
+        for(String s : listToConvert){
+            csvBuilder.append(s);
+            csvBuilder.append(SEPARATOR);
+        }
 
-		String csv = csvBuilder.toString();
+        String csv = csvBuilder.toString();
 
-		//Remove last separator
-		if(csv.endsWith(SEPARATOR)){
-			csv = csv.substring(0, csv.length() - SEPARATOR.length());
-		}
+        //Remove last separator
+        if(csv.endsWith(SEPARATOR)){
+            csv = csv.substring(0, csv.length() - SEPARATOR.length());
+        }
 
-		return csv;
-	}
+        return csv;
+    }
 
-	@Test
-	public void toCsvJava7_csvFromListOfString(){
-		List<String> cities = Arrays.asList(
-				"Milan", "London", "New York", "San Francisco");
+    @Test
+    public void toCsvJava7_csvFromListOfString(){
+        List<String> cities = Arrays.asList(
+                "Milan", "London", "New York", "San Francisco");
 
-		String expected = "Milan,London,New York,San Francisco";
+        String expected = "Milan,London,New York,San Francisco";
 
-		assertEquals(expected, toCsvJava7(cities));
-	}
+        assertEquals(expected, toCsvJava7(cities));
+    }
 
-	public static String toUpperCaseCsv(List<String> listToConvert){
-		return listToConvert.stream()
-				    .map(String::toUpperCase)
-				    .collect(joining(SEPARATOR));
-	}
+    public static String toUpperCaseCsv(List<String> listToConvert){
+        return listToConvert.stream()
+                    .map(String::toUpperCase)
+                    .collect(joining(SEPARATOR));
+    }
 
-	@Test
-	public void toUpperCaseCsv_upperCaseCsvFromListOfString(){
-		List<String> cities = Arrays.asList(
-				"Milan", "London", "New York", "San Francisco");
+    @Test
+    public void toUpperCaseCsv_upperCaseCsvFromListOfString(){
+        List<String> cities = Arrays.asList(
+                "Milan", "London", "New York", "San Francisco");
 
-		String expected = "MILAN,LONDON,NEW YORK,SAN FRANCISCO";
+        String expected = "MILAN,LONDON,NEW YORK,SAN FRANCISCO";
 
-		assertEquals(expected, toUpperCaseCsv(cities));
-	}
+        assertEquals(expected, toUpperCaseCsv(cities));
+    }
 }
 {% endhighlight %}
