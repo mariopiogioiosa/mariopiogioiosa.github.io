@@ -149,6 +149,8 @@ public class LoyaltyCard {
 
 We want to retrieve the number of points of our loyalty card if we have it otherwise, the number of points will return 0.
 
+_Node: In the following example we're going to use Mockito to mock LoyaltyCard class. Don't worry if you are not familiar with Mockito, we'll add some comments to the code._
+
 {% highlight java %}
 @Test
 public void map_whenCardPresent_thenNumber(){
@@ -256,8 +258,6 @@ optional.ifPresent(this::doSomething)
 
 We want to add 3 points to the loyalty card if the loyalty card is actually present.
 
-_Node: In the following example we're going to use Mockito to mock LoyaltyCard class. Don't worry if you are not familiar with Mockito, I'll add some comments to the code._
-
 {% highlight java %}
 @Test
 public void ifPresent_whenCardPresent_thenPointsAdded(){
@@ -271,21 +271,6 @@ public void ifPresent_whenCardPresent_thenPointsAdded(){
 }
 {% endhighlight %}
 
-## 7. Optional _ifPresentOrElse ?_
-
-Unfortunately, this is yet to come 🙂 [It will be available in Java 9](http://mail.openjdk.java.net/pipermail/core-libs-dev/2015-February/031223.html).
-
-Until then we have to write something like:
-
-{% highlight java %}
-if(optional.isPresent()){
-  doSomething(optional.get());
-} else {
-  doSomethingElse();
-}
-{% endhighlight %}
-
-There are cases in which you are allowed to use _get()_ and _isPresent()_ but use them with a grain of salt.
 
 **Resources:**
 
