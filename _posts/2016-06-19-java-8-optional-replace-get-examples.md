@@ -25,18 +25,18 @@ Different name, same issue?
 Calling `get()` without checking that the value is actually present it's a problem. So we should always write something like this in order to use `get()`.
 
 {% highlight java %}
-Optional<String> myString = Optional.ofNullable(getNullableString());
+Optional<String> myString = Optional.ofNullable(nullableString());
    if(myString.isPresent()){
        doSomething(myString.get());
    }
 {% endhighlight %}
 
-#### *But are Optional really meant to be used in this way? No.*
+#### *But are Optional really meant to be used in this way? Actually, no.*
 
 Writing block of `isPresent/get` is not so different from writing a classic null check.
 
 {% highlight java %}
-String myString = getNullableString();
+String myString = nullableString();
    if(myString != null){
        doSomething(myString);
    }
