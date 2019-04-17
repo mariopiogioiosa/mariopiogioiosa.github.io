@@ -42,7 +42,7 @@ String myString = getNullableString();
    }
 {% endhighlight %}
 
-How can we benefit from `Optional` object?
+How can we really benefit from `Optional` object?
 
 ## 1. Optional _orElse_ example
 It returns the value if is present, or the other specified otherwise.
@@ -51,7 +51,7 @@ Let's see an example:
 
 {% highlight java %}
 @Test
-public void orElse_whenNamePresent_ThenName(){
+public void namePresent(){
   Optional<String> petName = Optional.of("Bobby");
 
   assertEquals("Bobby", petName.orElse(""));
@@ -61,7 +61,7 @@ public void orElse_whenNamePresent_ThenName(){
 
 {% highlight java %}
 @Test
-public void orElse_whenNameNotPresent_ThenEmptyString(){
+public void orElse(){
   Optional<String> petName = Optional.empty();
 
   assertEquals("", petName.orElse(""));
@@ -82,14 +82,14 @@ It returns the value if it is present, or throws the specified exception otherwi
 
 {% highlight java %}
 @Test
-public void elseOrThrow_whenNamePresent_ThenName(){
+public void namePresent(){
   Optional<String> petName = Optional.of("Bobby");
 
   assertEquals("Bobby", petName.orElseThrow(IllegalArgumentException::new));
 }
 
 @Test(expected=IllegalArgumentException.class)
-public void elseOrThrow_whenNameNotPresent_ThenIllegalArgEx(){
+public void throwException(){
   Optional<String> petName = Optional.empty();
 
   petName.orElseThrow(IllegalArgumentException::new);
@@ -97,146 +97,93 @@ public void elseOrThrow_whenNameNotPresent_ThenIllegalArgEx(){
 {% endhighlight %}
 
 ## 3. Optional _filter_ example
-_filter()_ is useful to specify other conditions on our object. It returns an `Optional` containing the value if it is not empty and satisfies the specified predicate, an `Optional.empty()` otherwise.
+_filter()_ is useful to specify other conditions on our object. 
+It returns an `Optional` containing the value if it is not empty and satisfies the specified predicate, an `Optional.empty()` otherwise.
 
-In this example we want that the name should not be empty or with only empty spaces.
+In this example we want that the name length should be greater than 3.
 
 {% highlight java %}
 @Test
-public void filter_whenNameNotEmpty_thenName(){
-  Optional<String> petNameOpt = Optional.of("Bobby");
-
-  String petName = petNameOpt.filter(name -> !name.trim().isEmpty())
-                 .orElseThrow(IllegalArgumentException::new);
-
-  assertEquals("Bobby", petName);
+public void valueNotFilteredOut()
+{
+  Optional<String> petName = Optional.of("Bobby")
+                                     .filter(name -> name.length() > 3);
+  assertEquals(Optional.of("Bobby"), petName);
 }
 
-
-@Test(expected=IllegalArgumentException.class)
-public void filter_whenNameEmpty_thenIllegalArgEx(){
-  Optional<String> petNameOpt = Optional.of(" ");
-
-  petNameOpt.filter(name -> !name.trim().isEmpty())
-        .orElseThrow(IllegalArgumentException::new);
+@Test
+public void valueFilteredOut()
+{
+  Optional<String> petName = Optional.of("Bob")
+                                     .filter(name -> name.length() > 3);
+  assertEquals(Optional.empty(), petName);
 }
 {% endhighlight %}
 
 ## 4. Optional _map_ example
 _map()_ is a method used to apply a transformation to the content of the `Optional` if it's present. 
 
-But let's have a look to a proper example.
-We define a Pojo class, useful also for the following examples, that represents a loyalty card.
-
-{% highlight java %}
-public class LoyaltyCard {
-
-  private String cardNumber;
-  private int points;
-
-  public LoyaltyCard(String cardNumber, int points){
-    this.cardNumber = cardNumber;
-    this.points = points;
-  }
-
-  public int addPoints(int pointToAdd){
-    return points += pointToAdd;
-  }
-
-  //Getters
-}
-{% endhighlight %}
-
-We want to retrieve the number of points of our loyalty card if we have it otherwise, the number of points will return 0.
-
-_Node: In the following example we're going to use Mockito to mock LoyaltyCard class. Don't worry if you are not familiar with Mockito, we'll add some comments to the code._
+In this example we want to transform the name of the pet from String to Int by applying `String.length()` function.
 
 {% highlight java %}
 @Test
-public void map_whenCardPresent_thenNumber(){
-    LoyaltyCard mockedCard = mock(LoyaltyCard.class);
-    when(mockedCard.getPoints()).thenReturn(3);
-
-    Optional<LoyaltyCard> card = Optional.of(mockedCard);
-
-    int point = card.map(LoyaltyCard::getPoints)
-               .orElse(0);
-
-    assertEquals(3, point);
+public void transformWhenValueIsPresent()
+{
+  Optional<Integer> nameLength = Optional.of("Bobby")
+                                         .map(String::length);
+  assertEquals(Optional.of(5), nameLength);
 }
-{% endhighlight %}
 
-{% highlight java %}
 @Test
-public void map_whenCardNotPresent_thenZero(){
-    Optional<LoyaltyCard> card = Optional.empty();
-
-    int point = card.map(LoyaltyCard::getPoints)
-               .orElse(0);
-
-    assertEquals(0, point);
+public void mapNotExecutedWhenEmpty()
+{
+  Optional<Integer> nameLength = Optional.<String>empty()
+                                         .map(String::length);
+  assertEquals(Optional.empty(), nameLength);
 }
 {% endhighlight %}
+
+*What's interesting with the `map` method is that we are able to declare sequentially our operation without worrying 
+if the value is present or not. We can focus on the success case, we don't need to branch our code, the scenario in
+which the value is not present is automatically handled by the abstraction `Optional` that we are using.*
 
 ## 5. Optional _flatMap_ example
 
-_flatMap()_ it's really similar to _map()_ but when output is already an `Optional` it doesn't wrap it with another _Optional_. So instead of having `Optional<Optional<T>>` if will just return `Optional<T>`.
+_flatMap()_ it's similar to _map()_ but should be used when the transformation function returns an `Optional` of some `<T>`.
+_flatMap()_ executes the transformation function like the _map()_ but instead of returning `Optional<Optional<T>>` if will just return `Optional<T>`.
+Basically it flattens the `Optional`.
 
-Let me clarify it using an example. Let's define a new class, called _Gift_.
-
-{% highlight java %}
-
-public class Gift {
-
-  private String name;
-
-// Constructor and getters
-
-}
-{% endhighlight %}
-
-And let's define a new method to our LoyaltyCard class that returns an _Optional_ containing the last _Gift_ chosen. Since we are going to mock the result of this method, we don't really care about its implementation.
+Let's clarify it with an example. We define a function that returns an `Optional`, let's say a function
+that returns the last gift received by the pet.
 
 {% highlight java %}
-public Optional<Gift> getLastGift(){
-    //whatever
-    return Optional.empty();
-  }
+private Optional<String> lastGiftReceivedBy(String petName) = ???
 {% endhighlight %}
 
-We can now create a mocked _Gift_ with name "Biography of Guybrush Threepwood", put it into an _Optional_ and make _getLastGift _return it. So if we write:
+If we call our _lastGiftReceivedBy_ function in a _map()_ we will have an `Optional<Optional<String>>`.
+{% highlight java %}
+Optional<Optional<String>> lastGiftReceived = Optional.of("Bobby")
+                                                      .map(petName -> lastGiftReceivedBy(petName));
+{% endhighlight %}
+
+In order to flatten them we can use _flatMap()_
 
 {% highlight java %}
-card.map(LoyaltyCard::getLastGift)
+Optional<String> lastGiftReceived = Optional.of("Bobby")
+                                            .flatMap(petName -> lastGiftReceivedBy(petName));
+
 {% endhighlight %}
 
-The output will be an `Optional<Optional<Gift>>` that is not what we want, so flatMap will unwrap this double level and leave only an `Optional<Gift>`.
-
-{% highlight java %}
-@Test
-public void flatMap_whenCardAndLastGiftPresent_thenName(){
-    Gift mockedGift = mock(Gift.class);
-    when(mockedGift.getName()).thenReturn("Biography of Guybrush Threepwood");
-
-    LoyaltyCard mockedCard = mock(LoyaltyCard.class);
-    when(mockedCard.getLastGift()).thenReturn(Optional.of(mockedGift));
-    Optional<LoyaltyCard> card = Optional.of(mockedCard);
-
-    String giftName = card.flatMap(LoyaltyCard::getLastGift)
-                .map(Gift::getName)
-                .orElse("");
-
-    assertEquals("Biography of Guybrush Threepwood", giftName);
-}
-{% endhighlight %}
-
-Writing this solution by using _isPresent/get_ would have meant using a nested if: one for check that card was present and another of checking the gift. Harder to read, easier to fail.
+Writing this solution by using _isPresent/get_ would have meant using a nested if: one for the first
+`Optional`, one for the other. 
 
 ## 6. Optional _ifPresent_ example
 
 _[IfPresent](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ifPresent-java.util.function.Consumer-)_, that it's different from _isPresent_, accept a function, a `Consumer`, and executes it only if the value is present. 
 
-So instead of writing something like:
+Basically _ifPresent()_ should be used for function that does side-effect (returning a void).
+
+Instead of writing something like:
 
 {% highlight java %}
 if(optional.isPresent){
@@ -244,33 +191,18 @@ if(optional.isPresent){
 }
 {% endhighlight %}
 
-You can write:
+We can write:
 
 {% highlight java %}
 optional.ifPresent(val -> doSomething(val))
 {% endhighlight %}
 
-or if you prefer:
+Let's say we want to do a _System.out.println()_ of the name:
 
 {% highlight java %}
-optional.ifPresent(this::doSomething)
+Optional.of("Bobby")
+        .ifPresent(name -> System.out.println(name));
 {% endhighlight %}
-
-We want to add 3 points to the loyalty card if the loyalty card is actually present.
-
-{% highlight java %}
-@Test
-public void ifPresent_whenCardPresent_thenPointsAdded(){
-  LoyaltyCard mockedCard = mock(LoyaltyCard.class);
-  Optional<LoyaltyCard> loyaltyCard = Optional.of(mockedCard);
-
-  loyaltyCard.ifPresent(c -> c.addPoints(3));
-
-  //Verify addPoints method has been called 1 time and with input=3
-  verify(mockedCard, times(1)).addPoints(3);
-}
-{% endhighlight %}
-
 
 **Resources:**
 
