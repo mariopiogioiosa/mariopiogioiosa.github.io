@@ -8,6 +8,7 @@ baseurl: ""
 url: "https://reversecoding.net/"
 twitter_username: mariopiogioiosa
 github_username:  mariopiogioiosa
+linkedin_username: mariopiogioiosa
 
 # Build settings
 markdown: kramdown
