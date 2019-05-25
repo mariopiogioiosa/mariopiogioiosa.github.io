@@ -1,9 +1,10 @@
 title: Reversecoding
 email: mario@reversecoding.net
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: >-
+  Traditionally teaching methods start with the theory and then move the examples. I prefer do the opposite,
+  I find it more effective. I like start from a real example, play with that, break it down, ask my self some
+  questions and then move to the theory.  Reversecoding.net follows this approach: hope you'll find it helpful.
+  Thanks for visiting us!
 baseurl: ""
 url: "https://reversecoding.net/"
 twitter_username: mariopiogioiosa
