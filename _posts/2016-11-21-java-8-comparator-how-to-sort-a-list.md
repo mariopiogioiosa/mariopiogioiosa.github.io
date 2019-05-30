@@ -83,7 +83,7 @@ Movie{title='Pulp fiction'}
 {% endhighlight %}
 
 As you've probably noticed we haven't passed any `Comparator` but the `List` is correctly sorted. That's because of the title - the extracted field - that is a `String` and `String` implements `Comparable` interface. 
-If you peek at `Comparator.comparing()` implementation you will see that it calls _`compareTo`_ on the extracted key.
+If you peek at `Comparator.comparing()` implementation you will see that it calls `compareTo` on the extracted key.
 
 {% highlight java %}
 return (Comparator<T> & Serializable)
@@ -116,8 +116,8 @@ If you need to compare `int` or `long` you can use `comparingInt()` and `compa
 
 ## 5. Sort a List with custom Comparator
 
-In the previous examples we haven't specified any Comparator since it wasn't necessary but let's see an example in which we define our own _Comparator_. 
-Our _Movie_ class has a new field - starred - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the _List_. 
+In the previous examples we haven't specified any `Comparator` since it wasn't necessary but let's see an example in which we define our own `Comparator`. 
+Our `Movie` class has a new field - starred - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the `List`. 
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -150,7 +150,7 @@ Movie{starred=false, title='Pulp fiction', rating=8.9}
 {% endhighlight %}
 
 
-We can, of course, use Lambda expression instead of _Anonymous_ class as follows:
+We can, of course, use Lambda expression instead of `Anonymous` class as follows:
 
 {% highlight java %}
 movies.sort((m1, m2) -> {
@@ -174,8 +174,8 @@ movies.sort(Comparator.comparing(Movie::getStarred, (star1, star2) -> {
 {% endhighlight %}
 
 
-In the latest example _Comparator.comparing()_ takes as first parameter the function to extract the key to use for sorting and a _Comparator_ as second parameter. 
-This _Comparator_ uses the extracted keys for comparison, _star1_ and _star2_ are indeed `boolean` and represents _m1.getStarred()_ and _m2.getStarred()_ respectively.
+In the latest example `Comparator.comparing()` takes as first parameter the function to extract the key to use for sorting and a `Comparator` as second parameter. 
+This `Comparator` uses the extracted keys for comparison, `star1` and `star2` are indeed `boolean` and represents `m1.getStarred()` and `m2.getStarred()` respectively.
 
 ## 6. Sort a List with chain of Comparator
 
