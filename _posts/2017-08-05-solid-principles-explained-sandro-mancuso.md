@@ -6,22 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: https://reversecoding.net/?p=251
 permalink: /solid-principles-explained-sandro-mancuso/
-categories:
-  - OO
-tags:
-  - Clean code
-  - Devoxx
-  - FP
-  - Functional programming
-  - Object oriented
-  - Object oriented principles
-  - Object oriented programming
-  - OO
-  - OO principles
-  - Sandro mancuso
-  - Software Craftsmanship
-  - SOLID
-  - SOLID principles
+tags: [Clean code, Functional programming, Object oriented, Sandro Mancuso, Software Craftsmanship, SOLID, Devoxx]
 ---
 ### SOLID principles
 

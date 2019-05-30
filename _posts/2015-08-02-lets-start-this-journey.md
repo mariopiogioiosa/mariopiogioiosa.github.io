@@ -6,8 +6,6 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=6
 permalink: /lets-start-this-journey/
-categories:
-  - Blog
 ---
 Ciao!
 
@@ -22,7 +20,7 @@ There are hundreds of good tutorials on the web that explains to you how to eas
 #### So why do I think this course is different?
 As I said, I’ve never tried to create a blog, I’ve always thought would’ve been nice working on something that was mine, but I’ve never given the right priority to that. But then John, through his course, said:
 
-_Hey man, I know you are busy, I know you think that you aren't a great author, I know you prefer to invest your spare time on doing something else..but you know what, if you don't try, you will always be one of the others! So let’s start, follow me and in 3 weeks you’ll have your blog up and running._
+_Hey man, I know you are busy, I know you think that you aren't a great author, I know you prefer to invest your spare time on doing something else..but you know what, if you don't try, you will always be one of the others! So let’s start, follow me and in 3 weeks you’ll have your blog up and running_.
 Simply as that!
 
 #### In a nutshell: what is this course about?
