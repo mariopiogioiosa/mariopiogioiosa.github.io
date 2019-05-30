@@ -11,7 +11,9 @@ twitter_username: mariopiogioiosa
 github_username:  mariopiogioiosa
 linkedin_username: mariopiogioiosa
 
-# Build settings
+disqus:
+  shortname: reversecoding
+
 markdown: kramdown
 theme: minima
 plugins:
