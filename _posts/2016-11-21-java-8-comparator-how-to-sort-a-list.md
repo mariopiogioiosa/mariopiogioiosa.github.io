@@ -6,7 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=136
 permalink: /java-8-comparator-how-to-sort-a-list/
-tags: [Java, comparator]
+tags: [java, comparator]
 ---
 In this article, we're going to see several examples on how to sort a `List` in Java 8.
 

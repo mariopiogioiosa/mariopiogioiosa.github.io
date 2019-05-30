@@ -6,7 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: https://reversecoding.net/?p=191
 permalink: /spring-mvc-requestparam-binding-request-parameters/
-tags: [Java, Spring MVC]
+tags: [java, spring mvc]
 ---
 In this article, we are going to see several examples on how to get request parameters with Spring MVC, how to bind them to different objects, how to use `@RequestParam` annotation and when the annotation is not needed.
 

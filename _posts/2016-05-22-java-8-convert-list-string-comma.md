@@ -6,7 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=62
 permalink: /java-8-convert-list-string-comma/
-tags: [Java, stream]
+tags: [java, stream]
 ---
 Convert a `List<String>` in a `String` with all the values of the `List` comma separated using Java 8 is really straightforward.
 Let's have a look on how to do that.

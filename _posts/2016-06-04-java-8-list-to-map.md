@@ -6,7 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=96
 permalink: /java-8-list-to-map/
-tags: [Java, stream]
+tags: [java, stream]
 ---
 An example to convert a `List<?>` to a `Map<K,V>` using Java 8 _[Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_.
 
