@@ -53,7 +53,7 @@ If one of those **five** things changes, we have to touch this method - clearly 
 
 ### Functional is cool, but do you know OO: by Sandro Mancuso
 
-So today we will not speak about [Java 8](https://reversecoding.net/category/java-8/) or [Spring MVC](https://reversecoding.net/category/spring-mvc/) but Objected Oriented principles.
+So today we will not speak about [Java 8]({{ site.url }}/tags/java/) or [Spring MVC]({{ site.url }}/tags/spring-mvc/) but Objected Oriented principles.
 
 We start by suggesting this talk by [Sandro Mancuso](https://twitter.com/sandromancuso).
 
