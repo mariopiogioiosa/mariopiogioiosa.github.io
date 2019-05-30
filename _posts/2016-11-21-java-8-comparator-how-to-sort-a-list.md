@@ -43,7 +43,7 @@ By purpose, we've written London with _'L'_ in low-case to better highlight diff
 that returns a [Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html) that sorts by placing capital letters first 
 and [String.CASE_INSENSITIVE_ORDER](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER) that returns a case-insensitive `Comparator`.
 
-Basically, in Java 7 we were using `Collections.sort()` that was accepting a `List` and, eventually, a `Comparator` -  in Java 8 we have the new [List.sort()](http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-)</a></em> that accepts a `Comparator`.
+Basically, in Java 7 we were using `Collections.sort()` that was accepting a `List` and, eventually, a `Comparator` -  in Java 8 we have the new [List.sort()](http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-) that accepts a `Comparator`.
 
 ## 2. Sort a List of Integer
 
