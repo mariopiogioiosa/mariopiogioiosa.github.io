@@ -6,7 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: https://reversecoding.net/?p=251
 permalink: /solid-principles-explained-sandro-mancuso/
-tags: [Clean code, Functional programming, Object oriented, Sandro Mancuso, Software Craftsmanship, SOLID, Devoxx]
+tags: [Clean code, Functional programming, Object oriented, SOLID]
 ---
 ### SOLID principles
 

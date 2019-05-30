@@ -6,7 +6,7 @@ author: Mario Pio Gioiosa
 layout: post
 guid: http://reversecoding.net/?p=78
 permalink: /java-8-optional-replace-get-examples/
-tags: [Java 8, Optional, flatMap]
+tags: [Java, Optional]
 ---
 Optional class were introduced in order to prevent `NullPointerException`, but method `get()` used to retrieve the value inside the `Optional` might still throw a `NoSuchElementException`.
 
