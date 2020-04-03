@@ -1,10 +1,8 @@
 ---
-id: 136
 title: 'Java 8 Comparator - How to sort a List'
 date: 2016-11-21T23:10:17+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: http://reversecoding.net/?p=136
 permalink: /java-8-comparator-how-to-sort-a-list/
 tags: [java, comparator]
 ---

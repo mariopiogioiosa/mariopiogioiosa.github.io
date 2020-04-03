@@ -1,10 +1,8 @@
 ---
-id: 251
 title: SOLID principles explained by Sandro Mancuso
 date: 2017-08-05T10:54:22+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: https://reversecoding.net/?p=251
 permalink: /solid-principles-explained-sandro-mancuso/
 tags: [clean code, functional programming, object oriented, solid]
 ---

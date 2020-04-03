@@ -1,10 +1,8 @@
 ---
-id: 78
 title: 'Java 8 Optional - Replace your get() calls'
 date: 2016-06-19T15:19:43+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: http://reversecoding.net/?p=78
 permalink: /java-8-optional-replace-get-examples/
 tags: [java, optional]
 ---

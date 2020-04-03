@@ -1,10 +1,8 @@
 ---
-id: 191
 title: 'Spring MVC @Requestparam - Binding request parameters'
 date: 2017-02-26T23:54:19+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: https://reversecoding.net/?p=191
 permalink: /spring-mvc-requestparam-binding-request-parameters/
 tags: [java, spring mvc]
 ---

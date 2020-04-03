@@ -1,10 +1,8 @@
 ---
-id: 96
 title: 'Java 8 Stream - From List to Map'
 date: 2016-06-04T15:34:33+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: http://reversecoding.net/?p=96
 permalink: /java-8-list-to-map/
 tags: [java, stream]
 ---

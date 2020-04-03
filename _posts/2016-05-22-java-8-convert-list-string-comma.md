@@ -1,11 +1,10 @@
 ---
-id: 62
 title: 'Java 8 - Convert List to String comma separated'
 date: 2016-05-22T10:30:12+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: http://reversecoding.net/?p=62
 permalink: /java-8-convert-list-string-comma/
+description: Convert a `List<String>` in a `String` with all the values of the `List` comma separated using Java 8 is really straightforward.
 tags: [java, stream]
 ---
 Convert a `List<String>` in a `String` with all the values of the `List` comma separated using Java 8 is really straightforward.

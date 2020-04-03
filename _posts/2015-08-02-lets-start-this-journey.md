@@ -1,10 +1,8 @@
 ---
-id: 6
 title: "Let's start this journey!"
 date: 2015-08-02T15:56:43+00:00
 author: Mario Pio Gioiosa
 layout: post
-guid: http://reversecoding.net/?p=6
 permalink: /lets-start-this-journey/
 ---
 Ciao!
