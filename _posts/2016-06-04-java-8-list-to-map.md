@@ -4,7 +4,7 @@ date: 2016-06-04T15:34:33+00:00
 author: Mario Pio Gioiosa
 layout: post
 permalink: /java-8-list-to-map/
-description: An example to convert a `List<?>` to a `Map<K,V>` using Java 8 Stream
+description: An example to convert a List to a Map using Java 8 Stream
 tags: [java, stream]
 ---
 An example to convert a `List<?>` to a `Map<K,V>` using Java 8 _[Stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_.
