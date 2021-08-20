@@ -4,14 +4,14 @@ date: 2016-05-22T10:30:12+00:00
 author: Mario Pio Gioiosa
 layout: post
 permalink: /java-8-convert-list-string-comma/
-description: Convert a List of String in a String with all the values of the List comma separated, using Java 8, is really straightforward.
+description: Convert a List of String in a String with all the values of the List comma separated, using Java 8, is really straightforward.
 tags: [java, stream]
 ---
-Convert a `List<String>` in a `String` with all the values of the `List` comma separated using Java 8 is really straightforward.
+Convert a `List<String>` in a `String` with all the values of the `List` comma separated using Java 8 is really straightforward.
 Let's have a look on how to do that.
 
 ### Java 8 (or above)
-We simply can write _String.join(..)_, pass a delimiter and an [Iterable](https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html), then the new [StringJoiner](https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html) will do the rest:
+We simply can write _String.join(..)_, pass a delimiter and an [Iterable](https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html), then the new [StringJoiner](https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html) will do the rest:
 
 {% highlight java %}
 List<String> cities = Arrays.asList("Milan",
@@ -25,7 +25,7 @@ System.out.println(citiesCommaSeparated);
 // prints 'Milan,London,New York,San Francisco' to STDOUT.
 {% endhighlight %}
 
-In case we are working with a _[stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_ we can write as follow and still have the same result:
+In case we are working with a _[stream](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html)_ we can write as follow and still have the same result:
 
 {% highlight java %}
 String citiesCommaSeparated = cities.stream()
@@ -37,10 +37,10 @@ System.out.println(citiesCommaSeparated);
 {% endhighlight %}
 
 
-Note: you can statically *import java.util.stream.Collectors.joining* if you prefer just typing *joining(",")*.
+Note: you can statically *import java.util.stream.Collectors.joining* if you prefer just typing *joining(",")*.
 
 ### Java 7
-For the old times' sake, let's have a look at Java 7 implementation.
+For the old times' sake, let's have a look at Java 7 implementation.
 
 {% highlight java %}
 private static final String SEPARATOR = ",";
@@ -71,12 +71,12 @@ public static void main(String[] args) {
 {% endhighlight %}
 
 
-As you can see it's much more verbose and easier to make mistakes like forgetting to remove the last comma. You can implement this in several ways - for example by moving the logic that removes the last comma inside the *for* loop - but none will be so explicative and immediate to understand as the declarative solution expressed in Java 8.
+As you can see it's much more verbose and easier to make mistakes like forgetting to remove the last comma. You can implement this in several ways - for example by moving the logic that removes the last comma inside the *for* loop - but none will be so explicative and immediate to understand as the declarative solution expressed in Java 8.
 
-The focus should be on what you want to do - joining a `List` of `String` - not on how.
+The focus should be on what you want to do - joining a `List` of `String` - not on how.
 
 ### Java 8: Manipulate String before joining
-Before joining you can manipulate your `String` as you prefer by using *map()* or cutting some `String` out by using *filter()*.  I'll cover those topics in further articles. Meanwhile, this a straightforward example on how to transform the whole String in upper-case before joining them.
+Before joining you can manipulate your `String` as you prefer by using *map()* or cutting some `String` out by using *filter()*.  I'll cover those topics in further articles. Meanwhile, this a straightforward example on how to transform the whole String in upper-case before joining them.
 
 #### Java 8: From List to upper-case String comma separated
 {% highlight java %}
@@ -87,7 +87,7 @@ String citiesCommaSeparated = cities.stream()
 //Output: MILAN,LONDON,NEW YORK,SAN FRANCISCO
 {% endhighlight %}
 
-If you want to find out more about stream, I strongly suggest [this](https://vimeo.com/124034512) cool video of [Venkat Subramaniam](https://twitter.com/venkat_s).
+If you want to find out more about stream, I strongly suggest [this](https://vimeo.com/124034512) cool video of [Venkat Subramaniam](https://twitter.com/venkat_s).
 
 ### Let's play
 

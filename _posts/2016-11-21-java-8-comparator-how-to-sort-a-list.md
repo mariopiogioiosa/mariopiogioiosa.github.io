@@ -9,7 +9,7 @@ tags: [java, comparator]
 ---
 In this article, we're going to see several examples on how to sort a `List` in Java 8.
 
-## 1. Sort a List of String alphabetically
+## 1. Sort a List of String alphabetically
 
 {% highlight java %}
 List<String> cities = Arrays.asList(
@@ -31,11 +31,11 @@ System.out.println(cities);
 //[Milan, New Delhi, San Francisco, Tokyo, london]
 {% endhighlight %}
 
-By purpose, we've written London with _'L'_ in low-case to better highlight difference between [Comparator.naturalOrder()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#naturalOrder--) 
-that returns a [Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html) that sorts by placing capital letters first 
-and [String.CASE_INSENSITIVE_ORDER](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER) that returns a case-insensitive `Comparator`.
+By purpose, we've written London with _'L'_ in low-case to better highlight difference between [Comparator.naturalOrder()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#naturalOrder--) 
+that returns a [Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html) that sorts by placing capital letters first 
+and [String.CASE_INSENSITIVE_ORDER](http://docs.oracle.com/javase/8/docs/api/java/lang/String.html#CASE_INSENSITIVE_ORDER) that returns a case-insensitive `Comparator`.
 
-Basically, in Java 7 we were using `Collections.sort()` that was accepting a `List` and, eventually, a `Comparator` -  in Java 8 we have the new [List.sort()](http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-) that accepts a `Comparator`.
+Basically, in Java 7 we were using `Collections.sort()` that was accepting a `List` and, eventually, a `Comparator` -  in Java 8 we have the new [List.sort()](http://docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-) that accepts a `Comparator`.
 
 ## 2. Sort a List of Integer
 
@@ -50,7 +50,7 @@ System.out.println(numbers); //[1, 2, 4, 6, 9]
 
 ## 3. Sort a List by String field
 
-Let's suppose we've our `Movie` class and we want to sort our `List` by title. We can use [Comparator.comparing()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-) and pass a function that extracts the field to use for sorting - title - in this example.
+Let's suppose we've our `Movie` class and we want to sort our `List` by title. We can use [Comparator.comparing()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-) and pass a function that extracts the field to use for sorting - title - in this example.
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -74,7 +74,7 @@ Movie{title='Lord of the rings'}
 Movie{title='Pulp fiction'}
 {% endhighlight %}
 
-As you've probably noticed we haven't passed any `Comparator` but the `List` is correctly sorted. That's because of the title - the extracted field - that is a `String` and `String` implements `Comparable` interface. 
+As you've probably noticed we haven't passed any `Comparator` but the `List` is correctly sorted. That's because of the title - the extracted field - that is a `String` and `String` implements `Comparable` interface. 
 If you peek at `Comparator.comparing()` implementation you will see that it calls `compareTo` on the extracted key.
 
 {% highlight java %}
@@ -83,10 +83,10 @@ return (Comparator<T> & Serializable)
 {% endhighlight %}
 
 
-## 4. Sort a List by double field
+## 4. Sort a List by double field
 
 In a similar way, we can use [Comparator.comparingDouble()](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparingDouble-java.util.function.ToDoubleFunction-) for comparing `double` value. 
-In the example, we want to order our `List` of `Movie` by rating, from the highest to the lowest.
+In the example, we want to order our `List` of `Movie` by rating, from the highest to the lowest.
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -104,12 +104,12 @@ movies.forEach(System.out::println);
 We used [reversed](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#reversed--) function on the `Comparator` in order to invert default natural-order that is from lowest to highest. 
 `Comparator.comparingDouble()` uses `Double.compare()` under the hood.
 
-If you need to compare `int` or `long` you can use `comparingInt()` and `comparingLong()` respectively.
+If you need to compare `int` or `long` you can use `comparingInt()` and `comparingLong()` respectively.
 
-## 5. Sort a List with custom Comparator
+## 5. Sort a List with custom Comparator
 
-In the previous examples we haven't specified any `Comparator` since it wasn't necessary but let's see an example in which we define our own `Comparator`. 
-Our `Movie` class has a new field - starred - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the `List`. 
+In the previous examples we haven't specified any `Comparator` since it wasn't necessary but let's see an example in which we define our own `Comparator`. 
+Our `Movie` class has a new field - starred - set using the third constructor parameter. In the example, we want to sort the list so that we have starred movie at the top of the `List`. 
 
 {% highlight java %}
 List<Movie> movies = Arrays.asList(
@@ -166,10 +166,10 @@ movies.sort(Comparator.comparing(Movie::getStarred, (star1, star2) -> {
 {% endhighlight %}
 
 
-In the latest example `Comparator.comparing()` takes as first parameter the function to extract the key to use for sorting and a `Comparator` as second parameter. 
-This `Comparator` uses the extracted keys for comparison, `star1` and `star2` are indeed `boolean` and represents `m1.getStarred()` and `m2.getStarred()` respectively.
+In the latest example `Comparator.comparing()` takes as first parameter the function to extract the key to use for sorting and a `Comparator` as second parameter. 
+This `Comparator` uses the extracted keys for comparison, `star1` and `star2` are indeed `boolean` and represents `m1.getStarred()` and `m2.getStarred()` respectively.
 
-## 6. Sort a List with chain of Comparator
+## 6. Sort a List with chain of Comparator
 
 In the latest example, we want to have starred movie at the top and then sort by rating.
 
@@ -201,4 +201,4 @@ Movie{starred=false, title='Back to the future', rating=8.5}
 {% endhighlight %}
 
 
-As you've seen we first sort by starred and then by rating - both reversed since we want the highest value and true first.
+As you've seen we first sort by starred and then by rating - both reversed since we want the highest value and true first.

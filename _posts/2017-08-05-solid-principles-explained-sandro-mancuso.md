@@ -22,7 +22,7 @@ Have you ever heard **SOLID** principles?
 
 Those principles are not difficult to understand when you initially study them, however, stick to them in your daily job is not trivial at all. Let's make an example on the first one - Single Responsibility Principle - the easiest and probably the most violated one.
 
-Let's imagine you have a function named _calculateTotalPrice(..) _and it's long, I don't know, let's say 50 lines of code. **Is the single responsibility principle respected?**
+Let's imagine you have a function named _calculateTotalPrice(..) _and it's long, I don't know, let's say 50 lines of code. **Is the single responsibility principle respected?**
 
 Maybe yes, is doing one thing: calculate the total price of the cart. However, when we look at the code we see something like that:
 
@@ -51,8 +51,8 @@ If one of those **five** things changes, we have to touch this method - clearly 
 
 ### Functional is cool, but do you know OO: by Sandro Mancuso
 
-So today we will not speak about [Java 8]({{ site.url }}/tags/java/) or [Spring MVC]({{ site.url }}/tags/spring-mvc/) but Objected Oriented principles.
+So today we will not speak about [Java 8]({{ site.url }}/tags/java/) or [Spring MVC]({{ site.url }}/tags/spring-mvc/) but Objected Oriented principles.
 
-We start by suggesting this talk by [Sandro Mancuso](https://twitter.com/sandromancuso).
+We start by suggesting this talk by [Sandro Mancuso](https://twitter.com/sandromancuso).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oiFYPAel-KY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

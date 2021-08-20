@@ -7,7 +7,7 @@ permalink: /java-8-optional-replace-get-examples/
 description:
 tags: [java, optional]
 ---
-Optional class were introduced in order to prevent `NullPointerException`, but method `get()` used to retrieve the value inside the `Optional` might still throw a `NoSuchElementException`.
+Optional class were introduced in order to prevent `NullPointerException`, but method `get()` used to retrieve the value inside the `Optional` might still throw a `NoSuchElementException`.
 
 Different name, same issue?
 
@@ -22,7 +22,7 @@ Optional<String> myString = Optional.ofNullable(nullableString());
 
 #### *But are Optional really meant to be used in this way? Actually, no.*
 
-Writing block of `isPresent/get` is not so different from writing a classic null check.
+Writing block of `isPresent/get` is not so different from writing a classic null check.
 
 {% highlight java %}
 String myString = nullableString();
@@ -66,7 +66,7 @@ if(petNameOptional.isPresent()){
 }
 {% endhighlight %}
 
-## 2. Optional _orElseThrow_ example
+## 2. Optional _orElseThrow_ example
 It returns the value if it is present, or throws the specified exception otherwise.
 
 {% highlight java %}
@@ -85,8 +85,8 @@ public void throwException(){
 }
 {% endhighlight %}
 
-## 3. Optional _filter_ example
-_filter()_ is useful to specify other conditions on our object. 
+## 3. Optional _filter_ example
+_filter()_ is useful to specify other conditions on our object. 
 It returns an `Optional` containing the value if it is not empty and satisfies the specified predicate, an `Optional.empty()` otherwise.
 
 In this example we want that the name length should be greater than 3.
@@ -109,8 +109,8 @@ public void valueFilteredOut()
 }
 {% endhighlight %}
 
-## 4. Optional _map_ example
-_map()_ is a method used to apply a transformation to the content of the `Optional` if it's present. 
+## 4. Optional _map_ example
+_map()_ is a method used to apply a transformation to the content of the `Optional` if it's present. 
 
 In this example we want to transform the name of the pet from String to Int by applying `String.length()` function.
 
@@ -136,9 +136,9 @@ public void mapNotExecutedWhenEmpty()
 if the value is present or not. We can focus on the success case, we don't need to branch our code, the scenario in
 which the value is not present is automatically handled by the abstraction `Optional` that we are using.*
 
-## 5. Optional _flatMap_ example
+## 5. Optional _flatMap_ example
 
-_flatMap()_ it's similar to _map()_ but should be used when the transformation function returns an `Optional` of some `<T>`.
+_flatMap()_ it's similar to _map()_ but should be used when the transformation function returns an `Optional` of some `<T>`.
 _flatMap()_ executes the transformation function like the _map()_ but instead of returning `Optional<Optional<T>>` if will just return `Optional<T>`.
 Basically it flattens the `Optional`.
 
@@ -166,13 +166,13 @@ Optional<String> lastGiftReceived = Optional.of("Bobby")
 Writing this solution by using _isPresent/get_ would have meant using a nested if: one for the first
 `Optional`, one for the other. 
 
-## 6. Optional _ifPresent_ example
+## 6. Optional _ifPresent_ example
 
-_[IfPresent](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ifPresent-java.util.function.Consumer-)_, that it's different from _isPresent_, accept a function, a `Consumer`, and executes it only if the value is present. 
+_[IfPresent](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html#ifPresent-java.util.function.Consumer-)_, that it's different from _isPresent_, accept a function, a `Consumer`, and executes it only if the value is present. 
 
 Basically _ifPresent()_ should be used for function that does side-effect (returning a void).
 
-Instead of writing something like:
+Instead of writing something like:
 
 {% highlight java %}
 if(optional.isPresent){
