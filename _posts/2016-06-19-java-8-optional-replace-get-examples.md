@@ -7,7 +7,7 @@ permalink: /java-8-optional-replace-get-examples/
 description:
 tags: [java, optional]
 ---
-`Optional` class were introduced in order to prevent `NullPointerException`, but method `get()` used to retrieve the value inside the `Optional` might still throw a `NoSuchElementException`.
+_Optional_ class were introduced in order to prevent `NullPointerException`, but method `get()` used to retrieve the value inside the `Optional` might still throw a `NoSuchElementException`.
 
 Different name, same issue?
 
@@ -20,7 +20,7 @@ Optional<String> myString = Optional.ofNullable(nullableString());
    }
 {% endhighlight %}
 
-#### *But are `Optional` really meant to be used in this way? Actually, no.*
+#### *But are Optional really meant to be used in this way? Actually, no.*
 
 Writing block of `isPresent/get` is not so different from writing a classic null check.
 
